@@ -21,21 +21,9 @@ Her ders; konu anlatımı, devre şeması (Tinkercad/Görsel), Arduino C/C++ kod
 
 *   **Donanım:** Arduino Uno, Breadboard, LED, Direnç (220Ω), Jumper Kablolar.
 *   **Yazılım & Simülasyon:**
-    *   [mBlock 5](https://www.mblock.cc/en/download/) (Blok Tabanlı Kodlama)
-    *   [Arduino IDE](https://www.arduino.cc/en/software) (C/C++ Kodlama)
-    *   [Tinkercad Circuits](https://www.tinkercad.com/) (Çevrimiçi Devre Simülasyonu)
-
----
-
-## 📂 Klasör Yapısı
-
-Her ders klasörü şu standart yapıyı takip eder:
-```text
-XX-KonuAdi/
-├── README.md           # Derse ait detaylı açıklama, şemalar ve Tinkercad bağlantısı
-├── XX-KonuAdi.ino      # Arduino C/C++ kodları
-└── images/             # Devre şeması ve mBlock ekran görüntüleri
-```
+*   [mBlock 5](https://www.mblock.cc/en/download/) (Blok Tabanlı Kodlama)
+*   [Arduino IDE](https://www.arduino.cc/en/software) (C/C++ Kodlama)
+*   [Tinkercad Circuits](https://www.tinkercad.com/) (Çevrimiçi Devre Simülasyonu)
 
 ---
 
