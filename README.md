@@ -27,6 +27,7 @@ Her ders; konu anlatımı, devre şeması (Tinkercad/Görsel), Arduino C/C++ kod
 | **15** | [Araç Park Sensörü Yapımı](./15-Park_Sensoru) | 🟡 Orta Seviye | [İncele](./15-Park_Sensoru) |
 | **16** | [HC-SR501 PIR Sensörü ile Hırsız Alarmı](./16-PIR_Hirsiz_Alarm) | 🟡 Orta Seviye | [İncele](./16-PIR_Hirsiz_Alarm) |
 | **17** | [Alev Sensörü ile Yangın Alarmı](./17-Alev_Sensoru) | 🟡 Orta Seviye | [İncele](./17-Alev_Sensoru) |
+| **18** | [MAX7219 Entegresi ile 8x8 LED Matris](./18-8x8_Matrix) | 🔴 İleri Seviye | [İncele](./18-8x8_Matrix) |
 
 *Yeni dersler düzenli olarak eklenecektir!* 🎛️
 

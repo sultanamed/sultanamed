@@ -1,0 +1,1635 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ROBOTIST 8x8 LED Matris Pro Stüdyo</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-primary: #0f172a;
+            --bg-secondary: #1e293b;
+            --bg-card: #151f32;
+            --border-color: #22314d;
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+            --accent-color: #ef4444;
+            --accent-hover: #dc2626;
+            --accent-glow: rgba(239, 68, 68, 0.4);
+            --led-on: #ff4a4a;
+            --led-off: #2d3748;
+            --success: #10b981;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Outfit', sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        body {
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            min-height: 100vh;
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        /* Header Styles */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem;
+            background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-card) 100%);
+            border: 1px solid var(--border-color);
+            border-radius: 1rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+        }
+
+        .logo-section h1 {
+            font-size: 1.8rem;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            background: linear-gradient(to right, #ff7e5f, #feb47b, var(--accent-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo-section p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-top: 0.25rem;
+        }
+
+        .badge {
+            background-color: rgba(239, 68, 68, 0.1);
+            border: 1px solid var(--accent-color);
+            color: var(--accent-color);
+            padding: 0.25rem 0.75rem;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .header-links a {
+            background-color: var(--accent-color);
+            color: white;
+            text-decoration: none;
+            padding: 0.6rem 1.2rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            transition: all 0.2s ease;
+            font-size: 0.9rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3);
+        }
+
+        .header-links a:hover {
+            background-color: var(--accent-hover);
+            transform: translateY(-2px);
+        }
+
+        /* Banner section */
+        .intro-banner {
+            background-color: rgba(30, 41, 59, 0.5);
+            border: 1px dashed var(--border-color);
+            border-radius: 0.75rem;
+            padding: 1rem 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .intro-text h3 {
+            color: #feb47b;
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        .intro-text p {
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            line-height: 1.4;
+        }
+
+        .visit-btn {
+            background-color: transparent;
+            border: 1px solid var(--text-secondary);
+            color: var(--text-primary);
+            padding: 0.4rem 0.8rem;
+            border-radius: 0.375rem;
+            cursor: pointer;
+            font-size: 0.8rem;
+            font-weight: 600;
+            transition: all 0.2s ease;
+            white-space: nowrap;
+        }
+
+        .visit-btn:hover {
+            background-color: var(--text-primary);
+            color: var(--bg-primary);
+            border-color: var(--text-primary);
+        }
+
+        /* Main Content Layout */
+        .main-layout {
+            display: grid;
+            grid-template-columns: 350px 1fr;
+            gap: 1.5rem;
+            align-items: start;
+        }
+
+        @media (max-width: 1024px) {
+            .main-layout {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Cards and Panels */
+        .card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+            display: flex;
+            flex-direction: column;
+            gap: 1.25rem;
+        }
+
+        .card-title {
+            font-size: 1.15rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 0.75rem;
+        }
+
+        /* Pin Configuration */
+        .pin-settings {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1rem;
+        }
+
+        .pin-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.5rem 0.75rem;
+            background-color: var(--bg-secondary);
+            border-radius: 0.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .pin-label {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+
+        .pin-value-fixed {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #fbbf24;
+        }
+
+        .pin-select {
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            border: 1px solid var(--border-color);
+            padding: 0.25rem 0.5rem;
+            border-radius: 0.375rem;
+            font-size: 0.85rem;
+            font-weight: 600;
+            outline: none;
+            cursor: pointer;
+        }
+
+        /* Mode Selector Tabs */
+        .tabs {
+            display: flex;
+            background-color: var(--bg-secondary);
+            border-radius: 0.5rem;
+            padding: 0.25rem;
+            border: 1px solid var(--border-color);
+        }
+
+        .tab-btn {
+            flex: 1;
+            background: none;
+            border: none;
+            color: var(--text-secondary);
+            padding: 0.5rem;
+            font-size: 0.85rem;
+            font-weight: 600;
+            border-radius: 0.375rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .tab-btn.active {
+            background-color: var(--accent-color);
+            color: white;
+            box-shadow: 0 2px 8px rgba(239, 68, 68, 0.25);
+        }
+
+        /* Mode Contents */
+        .mode-content {
+            display: none;
+        }
+
+        .mode-content.active {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .input-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .input-group label {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-weight: 600;
+        }
+
+        .input-field {
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            border: 1px solid var(--border-color);
+            padding: 0.75rem;
+            border-radius: 0.5rem;
+            font-size: 0.95rem;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        .input-field:focus {
+            border-color: var(--accent-color);
+        }
+
+        .checkbox-container {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            cursor: pointer;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            user-select: none;
+        }
+
+        .checkbox-container input {
+            cursor: pointer;
+        }
+
+        /* Studio Work Area */
+        .workspace {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .workspace {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Matrix Simulator */
+        .matrix-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            background-color: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 1rem;
+            padding: 1.5rem;
+        }
+
+        .matrix-grid {
+            display: grid;
+            grid-template-columns: repeat(8, 1fr);
+            gap: 8px;
+            background-color: #111827;
+            padding: 12px;
+            border-radius: 0.75rem;
+            box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.5);
+            width: 320px;
+            height: 320px;
+        }
+
+        .led {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background-color: var(--led-off);
+            cursor: pointer;
+            transition: all 0.15s ease;
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.4);
+        }
+
+        .led.active {
+            background-color: var(--led-on);
+            box-shadow: 0 0 12px var(--accent-color), inset 0 1px 3px rgba(255, 255, 255, 0.5);
+        }
+
+        .matrix-meta {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+
+        /* Timeline / Frames Controls */
+        .btn-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            width: 100%;
+        }
+
+        .btn {
+            background-color: var(--bg-secondary);
+            color: var(--text-primary);
+            border: 1px solid var(--border-color);
+            padding: 0.5rem 0.75rem;
+            border-radius: 0.375rem;
+            font-size: 0.8rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.35rem;
+        }
+
+        .btn:hover {
+            background-color: var(--border-color);
+        }
+
+        .btn-accent {
+            background-color: var(--accent-color);
+            border-color: var(--accent-color);
+            color: white;
+        }
+
+        .btn-accent:hover {
+            background-color: var(--accent-hover);
+        }
+
+        /* Timeline Strip */
+        .timeline-container {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            width: 100%;
+        }
+
+        .timeline-title {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+
+        .timeline-scroll {
+            display: flex;
+            gap: 0.5rem;
+            overflow-x: auto;
+            padding: 0.5rem 0;
+            min-height: 80px;
+            background-color: rgba(15, 23, 42, 0.5);
+            border-radius: 0.5rem;
+            border: 1px solid var(--border-color);
+        }
+
+        .timeline-frame {
+            position: relative;
+            flex: 0 0 60px;
+            height: 60px;
+            border: 1px solid var(--border-color);
+            border-radius: 0.375rem;
+            background-color: #111827;
+            cursor: pointer;
+            padding: 4px;
+            display: grid;
+            grid-template-columns: repeat(8, 1fr);
+            gap: 1px;
+        }
+
+        .timeline-frame.active {
+            border-color: var(--accent-color);
+            box-shadow: 0 0 8px var(--accent-glow);
+        }
+
+        .timeline-frame-mini-led {
+            background-color: var(--led-off);
+            border-radius: 50%;
+        }
+
+        .timeline-frame-mini-led.active {
+            background-color: var(--accent-color);
+        }
+
+        .timeline-frame-label {
+            position: absolute;
+            bottom: 2px;
+            right: 2px;
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            font-size: 0.6rem;
+            padding: 1px 3px;
+            border-radius: 2px;
+        }
+
+        .frame-delete-btn {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background-color: #ef4444;
+            color: white;
+            border: none;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            font-size: 10px;
+            line-height: 16px;
+            text-align: center;
+            cursor: pointer;
+            display: none;
+        }
+
+        .timeline-frame:hover .frame-delete-btn {
+            display: block;
+        }
+
+        /* Preset/Template Library */
+        .preset-library {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            height: 100%;
+        }
+
+        .preset-tabs {
+            display: flex;
+            gap: 0.25rem;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 0.5rem;
+            overflow-x: auto;
+        }
+
+        .preset-tab-btn {
+            background: none;
+            border: none;
+            color: var(--text-secondary);
+            font-size: 0.75rem;
+            font-weight: 600;
+            padding: 0.25rem 0.5rem;
+            cursor: pointer;
+            border-radius: 0.25rem;
+            white-space: nowrap;
+        }
+
+        .preset-tab-btn.active {
+            background-color: rgba(255, 255, 255, 0.05);
+            color: var(--text-primary);
+        }
+
+        .preset-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+            gap: 0.5rem;
+            max-height: 250px;
+            overflow-y: auto;
+            padding-right: 0.25rem;
+        }
+
+        .preset-item {
+            background-color: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 0.5rem;
+            padding: 0.5rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.4rem;
+            cursor: pointer;
+            transition: all 0.15s ease;
+        }
+
+        .preset-item:hover {
+            border-color: var(--accent-color);
+            transform: translateY(-2px);
+        }
+
+        .preset-preview {
+            width: 32px;
+            height: 32px;
+            display: grid;
+            grid-template-columns: repeat(8, 1fr);
+            gap: 1px;
+            background-color: #111827;
+            padding: 2px;
+            border-radius: 0.25rem;
+        }
+
+        .preset-preview-led {
+            background-color: var(--led-off);
+            border-radius: 50%;
+        }
+
+        .preset-preview-led.active {
+            background-color: var(--accent-color);
+        }
+
+        .preset-name {
+            font-size: 0.65rem;
+            font-weight: 500;
+            color: var(--text-secondary);
+            text-align: center;
+            word-break: break-word;
+            line-height: 1.1;
+        }
+
+        /* Code display block */
+        .code-container {
+            position: relative;
+            background-color: #0b0f19;
+            border: 1px solid var(--border-color);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .code-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 0.75rem;
+        }
+
+        .code-header-title {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .code-block-wrapper {
+            position: relative;
+            max-height: 500px;
+            overflow-y: auto;
+            border-radius: 0.5rem;
+        }
+
+        pre code {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85rem;
+            line-height: 1.5;
+            color: #d1d5db;
+            white-space: pre;
+            display: block;
+        }
+
+        /* Pin status bar in footer */
+        .pin-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.75rem 1rem;
+            background-color: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 0.5rem;
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+        }
+
+        .pin-bar-nodes {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .pin-node {
+            display: flex;
+            gap: 0.25rem;
+            align-items: center;
+        }
+
+        .pin-node span {
+            color: var(--accent-color);
+            font-weight: 600;
+        }
+
+        .toast {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background-color: var(--success);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+            font-size: 0.9rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.3s ease;
+            pointer-events: none;
+            z-index: 100;
+        }
+
+        .toast.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Footer styling */
+        footer {
+            text-align: center;
+            padding: 1rem 0;
+            color: var(--text-secondary);
+            font-size: 0.8rem;
+            border-top: 1px solid var(--border-color);
+            margin-top: 2rem;
+        }
+
+        /* Custom Scrollbars */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--bg-primary);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--border-color);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--text-secondary);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Section -->
+    <header>
+        <div class="logo-section">
+            <h1><span>🤖</span> ROBOTIST 8x8 LED Matris Pro Stüdyo</h1>
+            <p>MAX7219 Entegresi & Kütüphanesiz Canlı Kod Sihirbazı | <span style="color:#feb47b;">robotist.fun</span></p>
+        </div>
+        <div>
+            <span class="badge">Ortak Katot Uyumlu</span>
+        </div>
+    </header>
+
+    <!-- Info Banner -->
+    <div class="intro-banner">
+        <div class="intro-text">
+            <h3>ROBOTIST Robotik Kulübü 🚀</h3>
+            <p>Türkiye'nin en eğlenceli robotik platformu! mBlock, Arduino, 3D Tasarım ve STEM projelerimizle kendi teknolojini üretmeye hazır mısın?</p>
+        </div>
+        <a href="https://robotist.fun" target="_blank" style="text-decoration:none;">
+            <button class="visit-btn">Hemen Ziyaret Et</button>
+        </a>
+    </div>
+
+    <!-- Main Content Layout -->
+    <div class="main-layout">
+        <!-- Sidebar Panel -->
+        <div class="card">
+            <h2 class="card-title">🔌 Pin Bağlantı Ayarları</h2>
+            <div class="pin-settings">
+                <div class="pin-row">
+                    <span class="pin-label">VCC (+5V)</span>
+                    <span class="pin-value-fixed">5V Pini</span>
+                </div>
+                <div class="pin-row">
+                    <span class="pin-label">GND (Toprak)</span>
+                    <span class="pin-value-fixed">GND Pini</span>
+                </div>
+                <div class="pin-row">
+                    <span class="pin-label">DIN (Data In)</span>
+                    <select id="din-select" class="pin-select" onchange="updateGenerator()">
+                        <option value="2">D2</option><option value="3">D3</option><option value="4">D4</option>
+                        <option value="5">D5</option><option value="6">D6</option><option value="7">D7</option>
+                        <option value="8">D8</option><option value="9">D9</option><option value="10">D10</option>
+                        <option value="11">D11</option><option value="12" selected>D12</option><option value="13">D13</option>
+                    </select>
+                </div>
+                <div class="pin-row">
+                    <span class="pin-label">CS (Load)</span>
+                    <select id="cs-select" class="pin-select" onchange="updateGenerator()">
+                        <option value="2">D2</option><option value="3">D3</option><option value="4">D4</option>
+                        <option value="5">D5</option><option value="6">D6</option><option value="7">D7</option>
+                        <option value="8">D8</option><option value="9">D9</option><option value="10" selected>D10</option>
+                        <option value="11">D11</option><option value="12">D12</option><option value="13">D13</option>
+                    </select>
+                </div>
+                <div class="pin-row">
+                    <span class="pin-label">CLK (Clock)</span>
+                    <select id="clk-select" class="pin-select" onchange="updateGenerator()">
+                        <option value="2">D2</option><option value="3">D3</option><option value="4">D4</option>
+                        <option value="5">D5</option><option value="6">D6</option><option value="7">D7</option>
+                        <option value="8">D8</option><option value="9">D9</option><option value="10">D10</option>
+                        <option value="11" selected>D11</option><option value="12">D12</option><option value="13">D13</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="tabs">
+                <button id="tab-scrolling" class="tab-btn active" onclick="switchMode('scrolling')">Canlı Akan Yazı Modu</button>
+                <button id="tab-drawing" class="tab-btn" onclick="switchMode('drawing')">Çizim Modu</button>
+            </div>
+
+            <!-- Tab: Scrolling Text Mode -->
+            <div id="mode-scrolling" class="mode-content active">
+                <div class="input-group">
+                    <label for="scrolling-text-input">AKACAK METİN (İngilizce karakterler)</label>
+                    <input type="text" id="scrolling-text-input" class="input-field" value="ROBOTIST.FUN" oninput="updateScrollingText()">
+                </div>
+                <label class="checkbox-container">
+                    <input type="checkbox" id="scrolling-active" checked onchange="toggleScrollingAnimation()">
+                    <span>Akan Yazıyı Aktif Et</span>
+                </label>
+                <p style="font-size: 0.8rem; color: var(--text-secondary); line-height: 1.4;">
+                    * Simülatör ve kod bu ayara göre dinamik olarak güncellenir.
+                </p>
+            </div>
+
+            <!-- Tab: Drawing Mode -->
+            <div id="mode-drawing" class="mode-content">
+                <div class="input-group">
+                    <label for="sprite-name-input">Sprite Adı</label>
+                    <input type="text" id="sprite-name-input" class="input-field" value="Benim_Sprite" oninput="updateGenerator()">
+                </div>
+                <div class="input-group">
+                    <label for="speed-select">Hız (Gecikme Süresi)</label>
+                    <select id="speed-select" class="pin-select" style="padding: 0.5rem;" onchange="updateSpeed()">
+                        <option value="100">100ms (Hızlı)</option>
+                        <option value="200">200ms</option>
+                        <option value="300" selected>300ms (Standart)</option>
+                        <option value="500">500ms</option>
+                        <option value="1000">1000ms (Yavaş)</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <!-- Work Area Panel -->
+        <div class="card" style="gap: 1.5rem;">
+            <div class="workspace">
+                <!-- LED Matrix Grid Simulator -->
+                <div class="matrix-container">
+                    <div id="matrix-title-label" class="matrix-meta" style="color: #feb47b; font-weight: 600;">Kendin Çiz & Simüle Et</div>
+                    <div id="led-matrix" class="matrix-grid"></div>
+                    <div id="frame-counter" class="matrix-meta">Kare 1/1</div>
+                    <div class="btn-row" style="justify-content: center;">
+                        <button class="btn" onclick="clearMatrix()">Temizle</button>
+                        <button class="btn" onclick="fillMatrix()">Tümünü Yak</button>
+                    </div>
+                </div>
+
+                <!-- Custom Drawing / Frame Actions -->
+                <div style="display: flex; flex-direction: column; gap: 1.25rem; justify-content: space-between;">
+                    <div class="timeline-container" id="timeline-controls" style="display:none;">
+                        <span class="timeline-title">Animasyon Zaman Akışı (Timeline)</span>
+                        <div class="btn-row" style="margin-bottom: 0.5rem;">
+                            <button class="btn btn-accent" onclick="addFrame()">Kare Ekle</button>
+                            <button class="btn" id="play-btn" onclick="togglePlayAnimation()">Oynat</button>
+                            <button class="btn" onclick="resetAnimation()">Sıfırla</button>
+                        </div>
+                        <div class="timeline-scroll" id="timeline-strip"></div>
+                    </div>
+
+                    <!-- Preset Libraries -->
+                    <div class="preset-library">
+                        <span class="timeline-title">50 Farklı Alternatif Şablon</span>
+                        <div class="preset-tabs" id="preset-categories"></div>
+                        <div class="preset-grid" id="preset-items"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- C++ Code Output Area -->
+            <div class="code-container">
+                <div class="code-header">
+                    <div class="code-header-title">
+                        <span>📄</span> Kütüphanesiz Saf C++ Kodu
+                    </div>
+                    <button class="btn btn-accent" onclick="copyCode()">Kodu Kopyala</button>
+                </div>
+                <div style="color: var(--text-secondary); font-size: 0.8rem; margin-bottom: 0.75rem;">
+                    Bu kodu herhangi bir ek kütüphane indirmeden doğrudan Arduino'nuza yükleyebilirsiniz.
+                </div>
+                <div class="code-block-wrapper">
+                    <pre><code id="code-output"></code></pre>
+                </div>
+            </div>
+
+            <!-- Connected pins badge bar -->
+            <div class="pin-bar">
+                <div class="pin-bar-nodes">
+                    <div class="pin-node">VCC ➔ <span>5V</span></div>
+                    <div class="pin-node">GND ➔ <span>GND</span></div>
+                    <div class="pin-node">DIN ➔ <span id="pin-din-val">D12</span></div>
+                    <div class="pin-node">CS ➔ <span id="pin-cs-val">D10</span></div>
+                    <div class="pin-node">CLK ➔ <span id="pin-clk-val">D11</span></div>
+                </div>
+                <div style="font-weight: 500;">robotist.fun</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast">
+        <span>✅</span> Kod başarıyla kopyalandı!
+    </div>
+
+    <footer>
+        <p>© 2026 ROBOTIST Çözüm Paneli. Her hakkı saklıdır. | Hayal gücünü kodla, geleceği robotla!</p>
+    </footer>
+
+    <!-- Presets and Font Data JS -->
+    <script>
+        // Preset Bitmaps (50+ Presets)
+        const PRESETS = {
+            "Emojiler": {
+                "Gülen Yüz": [0x3c, 0x42, 0x95, 0xa1, 0xa1, 0x95, 0x42, 0x3c],
+                "Üzgün Yüz": [0x3c, 0x42, 0xa5, 0x91, 0x91, 0xa5, 0x42, 0x3c],
+                "Göz Kırpan": [0x3c, 0x42, 0x95, 0xa1, 0x85, 0x99, 0x42, 0x3c],
+                "Şaşırmış": [0x3c, 0x42, 0xa5, 0x91, 0x99, 0x99, 0x42, 0x3c],
+                "Dil Çıkaran": [0x3c, 0x42, 0xa5, 0x91, 0xb1, 0xa5, 0x42, 0x3c],
+                "Uykulu": [0x3c, 0x42, 0x91, 0xa1, 0x81, 0x9d, 0x42, 0x3c],
+                "Kızgın": [0x3c, 0x42, 0xb5, 0x91, 0x91, 0xad, 0x42, 0x3c],
+                "Bıyıklı": [0x3c, 0x5a, 0x95, 0xa1, 0xa1, 0xe7, 0x42, 0x3c]
+            },
+            "Semboller": {
+                "Kalp": [0x00, 0x66, 0xff, 0xff, 0xff, 0x7e, 0x3c, 0x18],
+                "Küçük Kalp": [0x00, 0x00, 0x24, 0x6e, 0x6e, 0x3c, 0x18, 0x00],
+                "Yıldız": [0x18, 0x3c, 0x7e, 0xdb, 0xff, 0x24, 0x42, 0x00],
+                "Güneş": [0x24, 0x00, 0xbd, 0x3c, 0x3c, 0xbd, 0x00, 0x24],
+                "Hilal": [0x3c, 0x06, 0x03, 0x03, 0x13, 0x3b, 0x38, 0x30],
+                "Ev": [0x18, 0x3c, 0x7e, 0xff, 0xdb, 0xdb, 0xff, 0x00],
+                "Kilit": [0x3c, 0x42, 0x42, 0xff, 0xe7, 0xe7, 0xff, 0x00],
+                "Anahtar": [0x30, 0x4c, 0x4c, 0x30, 0x10, 0x10, 0x1c, 0x00],
+                "Müzik Notası": [0x0c, 0x0e, 0x0b, 0x09, 0x08, 0x38, 0x78, 0x30],
+                "Tik": [0x00, 0x01, 0x03, 0x06, 0x8c, 0xd8, 0x70, 0x20],
+                "Çarpı": [0x81, 0x42, 0x24, 0x18, 0x18, 0x24, 0x42, 0x81],
+                "Ampul": [0x3c, 0x42, 0x42, 0x42, 0x24, 0x24, 0x18, 0x18],
+                "Ok Yukarı": [0x18, 0x3c, 0x7e, 0x18, 0x18, 0x18, 0x18, 0x18],
+                "Ok Aşağı": [0x18, 0x18, 0x18, 0x18, 0x18, 0x7e, 0x3c, 0x18],
+                "Ok Sol": [0x10, 0x30, 0x70, 0xff, 0xff, 0x70, 0x30, 0x10],
+                "Ok Sağ": [0x08, 0x0c, 0x0e, 0xff, 0xff, 0x0e, 0x0c, 0x08],
+                "Soru İşareti": [0x3c, 0x42, 0x02, 0x0c, 0x10, 0x10, 0x00, 0x10],
+                "Ünlem": [0x18, 0x18, 0x18, 0x18, 0x18, 0x00, 0x18, 0x00],
+                "Ateş": [0x18, 0x3c, 0x7c, 0x7e, 0xff, 0xff, 0xdb, 0x99],
+                "Şimşek": [0x0c, 0x18, 0x30, 0x7e, 0x7e, 0x0c, 0x18, 0x30],
+                "Kar Tanesi": [0x99, 0x5a, 0x3c, 0xe7, 0xe7, 0x3c, 0x5a, 0x99],
+                "Çöp Kutusu": [0x3e, 0x2a, 0x3e, 0x3e, 0x22, 0x22, 0x3e, 0x00],
+                "Hediye": [0x18, 0x7e, 0xdb, 0xff, 0xbd, 0xbd, 0xff, 0x00],
+                "Kupa": [0x7e, 0xdb, 0xff, 0x7e, 0x3c, 0x18, 0x18, 0x3c],
+                "Telefon": [0x3c, 0x24, 0x24, 0x24, 0x24, 0x24, 0x3c, 0x00],
+                "Yaprak": [0x0c, 0x1e, 0x3e, 0x7c, 0xf8, 0xf0, 0x60, 0x40],
+                "Saat": [0x3c, 0x42, 0x99, 0x95, 0x81, 0x81, 0x42, 0x3c]
+            },
+            "Oyun": {
+                "Pacman": [0x3e, 0x7d, 0xf0, 0xe0, 0xf0, 0xff, 0x7f, 0x3e],
+                "Hayalet": [0x3c, 0x7e, 0xff, 0xdb, 0xff, 0xff, 0xff, 0xa5],
+                "İstilacı": [0x18, 0x3c, 0x7e, 0xdb, 0xff, 0x24, 0x5a, 0xa5],
+                "Kuru Kafa": [0x3c, 0x7e, 0xdb, 0xff, 0x7e, 0x3c, 0x3c, 0x24],
+                "Balık": [0x0c, 0x1e, 0x3f, 0x7c, 0x3f, 0x1e, 0x0c, 0x0a],
+                "Örümcek": [0x99, 0x5a, 0x7e, 0x3c, 0x3c, 0x7e, 0x5a, 0x99],
+                "Sonsuzluk": [0x00, 0x66, 0x99, 0x99, 0x42, 0x99, 0x99, 0x66],
+                "Çapa": [0x18, 0x18, 0x3c, 0x18, 0xff, 0xdb, 0x7e, 0x3c],
+                "Elmas": [0x18, 0x3c, 0x7e, 0xff, 0xff, 0x7e, 0x3c, 0x18]
+            },
+            "Rakamlar": {
+                "0": [0x3c, 0x42, 0x42, 0x42, 0x42, 0x42, 0x42, 0x3c],
+                "1": [0x18, 0x28, 0x08, 0x08, 0x08, 0x08, 0x08, 0x3e],
+                "2": [0x3c, 0x42, 0x02, 0x0c, 0x30, 0x40, 0x40, 0x7e],
+                "3": [0x3c, 0x42, 0x02, 0x1c, 0x02, 0x02, 0x42, 0x3c],
+                "4": [0x04, 0x0c, 0x14, 0x24, 0x44, 0x7e, 0x04, 0x04],
+                "5": [0x7e, 0x40, 0x40, 0x7c, 0x02, 0x02, 0x42, 0x3c],
+                "6": [0x3c, 0x40, 0x40, 0x7c, 0x42, 0x42, 0x42, 0x3c],
+                "7": [0x7e, 0x02, 0x04, 0x08, 0x10, 0x20, 0x20, 0x20],
+                "8": [0x3c, 0x42, 0x42, 0x3c, 0x42, 0x42, 0x42, 0x3c],
+                "9": [0x3c, 0x42, 0x42, 0x3e, 0x02, 0x02, 0x42, 0x3c]
+            }
+        };
+
+        // Font Bitmaps for Scrolling Text (Standard A-Z, 0-9, space, and simple symbols)
+        const FONT = {
+            ' ': [0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00],
+            'A': [0x18, 0x24, 0x42, 0x42, 0x7e, 0x42, 0x42, 0x42],
+            'B': [0x7c, 0x22, 0x22, 0x3c, 0x22, 0x22, 0x22, 0x7c],
+            'C': [0x3c, 0x42, 0x40, 0x40, 0x40, 0x40, 0x42, 0x3c],
+            'D': [0x78, 0x24, 0x22, 0x22, 0x22, 0x22, 0x24, 0x78],
+            'E': [0x7e, 0x40, 0x40, 0x7c, 0x40, 0x40, 0x40, 0x7e],
+            'F': [0x7e, 0x40, 0x40, 0x78, 0x40, 0x40, 0x40, 0x40],
+            'G': [0x3c, 0x42, 0x40, 0x40, 0x4e, 0x42, 0x42, 0x3c],
+            'H': [0x42, 0x42, 0x42, 0x7e, 0x42, 0x42, 0x42, 0x42],
+            'I': [0x3e, 0x08, 0x08, 0x08, 0x08, 0x08, 0x08, 0x3e],
+            'J': [0x07, 0x02, 0x02, 0x02, 0x02, 0x02, 0x42, 0x3c],
+            'K': [0x44, 0x48, 0x50, 0x60, 0x50, 0x48, 0x44, 0x42],
+            'L': [0x40, 0x40, 0x40, 0x40, 0x40, 0x40, 0x40, 0x7e],
+            'M': [0x42, 0x66, 0x5a, 0x42, 0x42, 0x42, 0x42, 0x42],
+            'N': [0x42, 0x62, 0x52, 0x4a, 0x46, 0x42, 0x42, 0x42],
+            'O': [0x3c, 0x42, 0x42, 0x42, 0x42, 0x42, 0x42, 0x3c],
+            'P': [0x7c, 0x42, 0x42, 0x7c, 0x40, 0x40, 0x40, 0x40],
+            'Q': [0x3c, 0x42, 0x42, 0x42, 0x42, 0x4a, 0x44, 0x3a],
+            'R': [0x7c, 0x42, 0x42, 0x7c, 0x48, 0x44, 0x42, 0x42],
+            'S': [0x3c, 0x42, 0x40, 0x3c, 0x02, 0x02, 0x42, 0x3c],
+            'T': [0x7e, 0x08, 0x08, 0x08, 0x08, 0x08, 0x08, 0x08],
+            'U': [0x42, 0x42, 0x42, 0x42, 0x42, 0x42, 0x42, 0x3c],
+            'V': [0x42, 0x42, 0x42, 0x42, 0x42, 0x24, 0x24, 0x18],
+            'W': [0x42, 0x42, 0x42, 0x42, 0x5a, 0x5a, 0x66, 0x42],
+            'X': [0x42, 0x42, 0x24, 0x18, 0x18, 0x24, 0x42, 0x42],
+            'Y': [0x42, 0x42, 0x24, 0x18, 0x08, 0x08, 0x08, 0x08],
+            'Z': [0x7e, 0x02, 0x04, 0x08, 0x10, 0x20, 0x40, 0x7e],
+            '0': [0x3c, 0x42, 0x42, 0x42, 0x42, 0x42, 0x42, 0x3c],
+            '1': [0x18, 0x28, 0x08, 0x08, 0x08, 0x08, 0x08, 0x3e],
+            '2': [0x3c, 0x42, 0x02, 0x0c, 0x30, 0x40, 0x40, 0x7e],
+            '3': [0x3c, 0x42, 0x02, 0x1c, 0x02, 0x02, 0x42, 0x3c],
+            '4': [0x04, 0x0c, 0x14, 0x24, 0x44, 0x7e, 0x04, 0x04],
+            '5': [0x7e, 0x40, 0x40, 0x7c, 0x02, 0x02, 0x42, 0x3c],
+            '6': [0x3c, 0x40, 0x40, 0x7c, 0x42, 0x42, 0x42, 0x3c],
+            '7': [0x7e, 0x02, 0x04, 0x08, 0x10, 0x20, 0x20, 0x20],
+            '8': [0x3c, 0x42, 0x42, 0x3c, 0x42, 0x42, 0x42, 0x3c],
+            '9': [0x3c, 0x42, 0x42, 0x3e, 0x02, 0x02, 0x42, 0x3c],
+            '.': [0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x0c, 0x0c],
+            ',': [0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x0c, 0x04],
+            '!': [0x08, 0x08, 0x08, 0x08, 0x08, 0x00, 0x08, 0x00],
+            '?': [0x3c, 0x42, 0x02, 0x0c, 0x10, 0x00, 0x10, 0x00],
+            '-': [0x00, 0x00, 0x00, 0x3e, 0x00, 0x00, 0x00, 0x00],
+            ':': [0x00, 0x00, 0x0c, 0x0c, 0x00, 0x0c, 0x0c, 0x00],
+            '+': [0x00, 0x08, 0x08, 0x3e, 0x08, 0x08, 0x00, 0x00],
+            '=': [0x00, 0x00, 0x3e, 0x00, 0x3e, 0x00, 0x00, 0x00]
+        };
+
+        // App State
+        let currentMode = 'scrolling'; // 'scrolling' or 'drawing'
+        let currentFrameIndex = 0;
+        let animationFrames = [
+            [0x00, 0x66, 0xff, 0xff, 0xff, 0x7e, 0x3c, 0x18] // Initial Heart frame
+        ];
+        let scrollText = "ROBOTIST.FUN";
+        let isPlaying = false;
+        let playInterval = null;
+        let scrollingStep = 0;
+        let speedMs = 300;
+
+        // Initialize App
+        window.onload = function() {
+            createLedMatrix();
+            loadPresetCategories();
+            loadCategoryItems("Emojiler");
+            updateGenerator();
+            startScrollingAnimation();
+        };
+
+        // Create the 8x8 grid of LEDs
+        function createLedMatrix() {
+            const matrixDiv = document.getElementById("led-matrix");
+            matrixDiv.innerHTML = '';
+            for (let r = 0; r < 8; r++) {
+                for (let c = 0; c < 8; c++) {
+                    const led = document.createElement("div");
+                    led.className = "led";
+                    led.dataset.row = r;
+                    led.dataset.col = c;
+                    
+                    // Allow click and drag to paint
+                    led.addEventListener("mousedown", handleLedClick);
+                    led.addEventListener("mouseenter", handleLedDrag);
+                    
+                    matrixDiv.appendChild(led);
+                }
+            }
+            
+            // Mouse up listener to end drag drawing
+            window.addEventListener("mouseup", () => window.isDrawing = false);
+            
+            // Draw current active frame
+            drawFrameOnGrid();
+        }
+
+        function handleLedClick(e) {
+            if (currentMode === 'scrolling') return; // Cannot edit during scrolling simulator
+            window.isDrawing = true;
+            toggleLed(e.target);
+        }
+
+        function handleLedDrag(e) {
+            if (currentMode === 'scrolling') return;
+            if (window.isDrawing) {
+                toggleLed(e.target);
+            }
+        }
+
+        function toggleLed(led) {
+            led.classList.toggle("active");
+            saveGridToCurrentFrame();
+            updateTimelineStrip();
+            updateGenerator();
+        }
+
+        // Draw the current active frame array to the HTML grid
+        function drawFrameOnGrid() {
+            const leds = document.querySelectorAll(".led");
+            const frame = animationFrames[currentFrameIndex];
+            
+            leds.forEach(led => {
+                const r = parseInt(led.dataset.row);
+                const c = parseInt(led.dataset.col);
+                // In binary, LSB is col 7, MSB is col 0
+                const bitVal = (frame[r] >> (7 - c)) & 0x01;
+                
+                if (bitVal === 1) {
+                    led.classList.add("active");
+                } else {
+                    led.classList.remove("active");
+                }
+            });
+
+            document.getElementById("frame-counter").innerText = `Kare ${currentFrameIndex + 1}/${animationFrames.length}`;
+        }
+
+        // Save grid state to current animation frame
+        function saveGridToCurrentFrame() {
+            const leds = document.querySelectorAll(".led");
+            const frame = new Array(8).fill(0);
+            
+            leds.forEach(led => {
+                if (led.classList.contains("active")) {
+                    const r = parseInt(led.dataset.row);
+                    const c = parseInt(led.dataset.col);
+                    frame[r] |= (1 << (7 - c));
+                }
+            });
+            
+            animationFrames[currentFrameIndex] = frame;
+        }
+
+        // Matrix Actions
+        function clearMatrix() {
+            if (currentMode === 'scrolling') return;
+            animationFrames[currentFrameIndex] = new Array(8).fill(0);
+            drawFrameOnGrid();
+            updateTimelineStrip();
+            updateGenerator();
+        }
+
+        function fillMatrix() {
+            if (currentMode === 'scrolling') return;
+            animationFrames[currentFrameIndex] = new Array(8).fill(0xFF);
+            drawFrameOnGrid();
+            updateTimelineStrip();
+            updateGenerator();
+        }
+
+        // Switch modes (Scrolling vs Drawing)
+        function switchMode(mode) {
+            currentMode = mode;
+            document.getElementById("tab-scrolling").classList.toggle("active", mode === 'scrolling');
+            document.getElementById("tab-drawing").classList.toggle("active", mode === 'drawing');
+            document.getElementById("mode-scrolling").classList.toggle("active", mode === 'scrolling');
+            document.getElementById("mode-drawing").classList.toggle("active", mode === 'drawing');
+            
+            // Adjust layouts and titles
+            document.getElementById("timeline-controls").style.display = mode === 'drawing' ? 'flex' : 'none';
+            document.getElementById("matrix-title-label").innerText = mode === 'drawing' ? "Kendin Çiz & Simüle Et" : "Akan Yazı Simülatörü";
+            
+            // Handle animation states
+            stopAnimation();
+            if (mode === 'scrolling') {
+                startScrollingAnimation();
+            } else {
+                currentFrameIndex = 0;
+                drawFrameOnGrid();
+                updateTimelineStrip();
+            }
+            updateGenerator();
+        }
+
+        // Load Preset Categories
+        function loadPresetCategories() {
+            const catContainer = document.getElementById("preset-categories");
+            catContainer.innerHTML = '';
+            
+            Object.keys(PRESETS).forEach((cat, index) => {
+                const btn = document.createElement("button");
+                btn.className = `preset-tab-btn ${index === 0 ? 'active' : ''}`;
+                btn.innerText = cat;
+                btn.onclick = (e) => {
+                    document.querySelectorAll(".preset-tab-btn").forEach(b => b.classList.remove("active"));
+                    btn.classList.add("active");
+                    loadCategoryItems(cat);
+                };
+                catContainer.appendChild(btn);
+            });
+        }
+
+        // Load Items for active category
+        function loadCategoryItems(categoryName) {
+            const itemsContainer = document.getElementById("preset-items");
+            itemsContainer.innerHTML = '';
+            
+            const categoryPresets = PRESETS[categoryName];
+            Object.keys(categoryPresets).forEach(name => {
+                const item = document.createElement("div");
+                item.className = "preset-item";
+                item.onclick = () => loadPreset(categoryPresets[name]);
+                
+                // Mini 8x8 visual preview
+                const preview = document.createElement("div");
+                preview.className = "preset-preview";
+                
+                const data = categoryPresets[name];
+                for (let r = 0; r < 8; r++) {
+                    for (let c = 0; c < 8; c++) {
+                        const cell = document.createElement("div");
+                        cell.className = "preset-preview-led";
+                        const bitVal = (data[r] >> (7 - c)) & 0x01;
+                        if (bitVal === 1) cell.classList.add("active");
+                        preview.appendChild(cell);
+                    }
+                }
+                
+                const label = document.createElement("span");
+                label.className = "preset-name";
+                label.innerText = name;
+                
+                item.appendChild(preview);
+                item.appendChild(label);
+                itemsContainer.appendChild(item);
+            });
+        }
+
+        function loadPreset(bitmap) {
+            if (currentMode === 'scrolling') {
+                // If in scrolling mode, switch to drawing mode first to allow editing
+                switchMode('drawing');
+            }
+            animationFrames[currentFrameIndex] = [...bitmap];
+            drawFrameOnGrid();
+            updateTimelineStrip();
+            updateGenerator();
+        }
+
+        // Timeline Frame Management
+        function addFrame() {
+            const newFrame = [...animationFrames[currentFrameIndex]];
+            animationFrames.push(newFrame);
+            currentFrameIndex = animationFrames.length - 1;
+            drawFrameOnGrid();
+            updateTimelineStrip();
+            updateGenerator();
+        }
+
+        function deleteFrame(index, e) {
+            e.stopPropagation();
+            if (animationFrames.length <= 1) return;
+            animationFrames.splice(index, 1);
+            if (currentFrameIndex >= animationFrames.length) {
+                currentFrameIndex = animationFrames.length - 1;
+            }
+            drawFrameOnGrid();
+            updateTimelineStrip();
+            updateGenerator();
+        }
+
+        function selectFrame(index) {
+            currentFrameIndex = index;
+            drawFrameOnGrid();
+            updateTimelineStrip();
+        }
+
+        function updateTimelineStrip() {
+            const strip = document.getElementById("timeline-strip");
+            strip.innerHTML = '';
+            
+            animationFrames.forEach((frame, idx) => {
+                const item = document.createElement("div");
+                item.className = `timeline-frame ${idx === currentFrameIndex ? 'active' : ''}`;
+                item.onclick = () => selectFrame(idx);
+                
+                // Draw tiny grid inside timeline item
+                for (let r = 0; r < 8; r++) {
+                    for (let c = 0; c < 8; c++) {
+                        const dot = document.createElement("div");
+                        dot.className = "timeline-frame-mini-led";
+                        const bitVal = (frame[r] >> (7 - c)) & 0x01;
+                        if (bitVal === 1) dot.classList.add("active");
+                        item.appendChild(dot);
+                    }
+                }
+                
+                const label = document.createElement("div");
+                label.className = "timeline-frame-label";
+                label.innerText = idx + 1;
+                item.appendChild(label);
+                
+                const delBtn = document.createElement("button");
+                delBtn.className = "frame-delete-btn";
+                delBtn.innerHTML = "×";
+                delBtn.onclick = (e) => deleteFrame(idx, e);
+                item.appendChild(delBtn);
+                
+                strip.appendChild(item);
+            });
+        }
+
+        // Scrolling Animation engine (JS Simulation)
+        function startScrollingAnimation() {
+            stopAnimation();
+            const scrollingActive = document.getElementById("scrolling-active").checked;
+            if (!scrollingActive) {
+                // If active checkbox is false, show static first character or empty grid
+                scrollingStep = 0;
+                renderScrollStep();
+                return;
+            }
+
+            scrollingStep = 0;
+            const text = scrollText.toUpperCase();
+            
+            // Precompute columns of the text
+            const textCols = [];
+            
+            // Add padding cols at beginning
+            for (let i = 0; i < 8; i++) textCols.push(0x00);
+            
+            // Get columns from character font mapping
+            for (let i = 0; i < text.length; i++) {
+                const char = text[i];
+                const charBytes = FONT[char] || FONT[' '];
+                
+                // Transpose row bytes to columns
+                for (let col = 0; col < 8; col++) {
+                    let colByte = 0;
+                    for (let row = 0; row < 8; row++) {
+                        const bit = (charBytes[row] >> (7 - col)) & 0x01;
+                        colByte |= (bit << row);
+                    }
+                    textCols.push(colByte);
+                }
+                // Thin space between characters
+                textCols.push(0x00);
+            }
+            
+            // Add padding cols at end
+            for (let i = 0; i < 8; i++) textCols.push(0x00);
+
+            isPlaying = true;
+            playInterval = setInterval(() => {
+                const leds = document.querySelectorAll(".led");
+                leds.forEach(led => {
+                    const r = parseInt(led.dataset.row);
+                    const c = parseInt(led.dataset.col);
+                    
+                    // Column indexing relative to scroll position
+                    const activeColIndex = scrollingStep + c;
+                    const colByte = textCols[activeColIndex] || 0;
+                    
+                    // Row bits from colByte
+                    const bitVal = (colByte >> r) & 0x01;
+                    
+                    if (bitVal === 1) led.classList.add("active");
+                    else led.classList.remove("active");
+                });
+                
+                scrollingStep = (scrollingStep + 1) % (textCols.length - 8);
+            }, 100);
+        }
+
+        function toggleScrollingAnimation() {
+            startScrollingAnimation();
+            updateGenerator();
+        }
+
+        function updateScrollingText() {
+            const input = document.getElementById("scrolling-text-input");
+            scrollText = input.value || " ";
+            startScrollingAnimation();
+            updateGenerator();
+        }
+
+        // Draw static scroll step (when not active)
+        function renderScrollStep() {
+            const leds = document.querySelectorAll(".led");
+            const text = scrollText.toUpperCase();
+            const char = text[0] || ' ';
+            const charBytes = FONT[char] || FONT[' '];
+            
+            leds.forEach(led => {
+                const r = parseInt(led.dataset.row);
+                const c = parseInt(led.dataset.col);
+                const bitVal = (charBytes[r] >> (7 - c)) & 0x01;
+                
+                if (bitVal === 1) led.classList.add("active");
+                else led.classList.remove("active");
+            });
+        }
+
+        // Animation Player for Drawing Mode
+        function togglePlayAnimation() {
+            if (isPlaying) {
+                stopAnimation();
+            } else {
+                startPlayAnimation();
+            }
+        }
+
+        function startPlayAnimation() {
+            stopAnimation();
+            isPlaying = true;
+            document.getElementById("play-btn").innerText = "Durdur";
+            document.getElementById("play-btn").classList.add("btn-accent");
+            
+            playInterval = setInterval(() => {
+                currentFrameIndex = (currentFrameIndex + 1) % animationFrames.length;
+                drawFrameOnGrid();
+                updateTimelineStrip();
+            }, speedMs);
+        }
+
+        function stopAnimation() {
+            isPlaying = false;
+            if (playInterval) {
+                clearInterval(playInterval);
+                playInterval = null;
+            }
+            document.getElementById("play-btn").innerText = "Oynat";
+            document.getElementById("play-btn").classList.remove("btn-accent");
+        }
+
+        function resetAnimation() {
+            stopAnimation();
+            currentFrameIndex = 0;
+            drawFrameOnGrid();
+            updateTimelineStrip();
+        }
+
+        function updateSpeed() {
+            const select = document.getElementById("speed-select");
+            speedMs = parseInt(select.value);
+            if (isPlaying && currentMode === 'drawing') {
+                startPlayAnimation(); // restart with new speed
+            }
+            updateGenerator();
+        }
+
+        // Code Generation Engine
+        function updateGenerator() {
+            const din = document.getElementById("din-select").value;
+            const cs = document.getElementById("cs-select").value;
+            const clk = document.getElementById("clk-select").value;
+            
+            // Update UI status bar values
+            document.getElementById("pin-din-val").innerText = `D${din}`;
+            document.getElementById("pin-cs-val").innerText = `D${cs}`;
+            document.getElementById("pin-clk-val").innerText = `D${clk}`;
+
+            let code = `// ROBOTIST 8x8 LED Matris Pro Stüdyo - Otomatik Üretilen Kod\n`;
+            code += `// VCC ➔ 5V  |  GND ➔ GND  |  DIN ➔ D${din}  |  CS ➔ D${cs}  |  CLK ➔ D${clk}\n`;
+            code += `// Entegre: MAX7219  |  Mod: ${currentMode === 'drawing' ? 'Kare Animasyon' : 'Akan Yazı'}\n`;
+            code += `// robotist.fun\n\n`;
+
+            code += `const int DIN_PIN = ${din};\n`;
+            code += `const int CS_PIN = ${cs};\n`;
+            code += `const int CLK_PIN = ${clk};\n\n`;
+
+            code += `// MAX7219 Kaydedici Adresleri\n`;
+            code += `const byte REG_NOOP        = 0x00;\n`;
+            code += `const byte REG_DIGIT0      = 0x01;\n`;
+            code += `const byte REG_DIGIT1      = 0x02;\n`;
+            code += `const byte REG_DIGIT2      = 0x03;\n`;
+            code += `const byte REG_DIGIT3      = 0x04;\n`;
+            code += `const byte REG_DIGIT4      = 0x05;\n`;
+            code += `const byte REG_DIGIT5      = 0x06;\n`;
+            code += `const byte REG_DIGIT6      = 0x07;\n`;
+            code += `const byte REG_DIGIT7      = 0x08;\n`;
+            code += `const byte REG_DECODEMODE  = 0x09;\n`;
+            code += `const byte REG_INTENSITY   = 0x0A;\n`;
+            code += `const byte REG_SCANLIMIT   = 0x0B;\n`;
+            code += `const byte REG_SHUTDOWN    = 0x0C;\n`;
+            code += `const byte REG_DISPLAYTEST = 0x0F;\n\n`;
+
+            if (currentMode === 'drawing') {
+                // Drawing/Animation Mode
+                const name = (document.getElementById("sprite-name-input").value || "Benim_Sprite")
+                    .replace(/[^A-Za-z0-9_]/g, '_');
+                
+                code += `// Toplam Kare Sayısı: ${animationFrames.length}\n`;
+                code += `const int FRAME_COUNT = ${animationFrames.length};\n`;
+                code += `const int ANIMATION_SPEED = ${speedMs}; // Gecikme (ms)\n\n`;
+                
+                code += `const byte ${name}[FRAME_COUNT][8] = {\n`;
+                
+                animationFrames.forEach((frame, index) => {
+                    const rowHex = frame.map(b => "0x" + b.toString(16).toUpperCase().padStart(2, '0'));
+                    code += `  { ${rowHex.join(", ")} }${index < animationFrames.length - 1 ? ',' : ''} // Kare ${index + 1}\n`;
+                });
+                
+                code += `};\n\n`;
+
+                code += `void sendByte(byte reg, byte data) {\n`;
+                code += `  digitalWrite(CS_PIN, LOW);\n`;
+                code += `  shiftOut(DIN_PIN, CLK_PIN, MSBFIRST, reg);\n`;
+                code += `  shiftOut(DIN_PIN, CLK_PIN, MSBFIRST, data);\n`;
+                code += `  digitalWrite(CS_PIN, HIGH);\n`;
+                code += `}\n\n`;
+
+                code += `void initMAX7219() {\n`;
+                code += `  sendByte(REG_DECODEMODE, 0x00);  // Decode mod kapalı (Direkt LED kontrolü)\n`;
+                code += `  sendByte(REG_INTENSITY, 0x03);   // Parlaklık seviyesi (0-15 arası)\n`;
+                code += `  sendByte(REG_SCANLIMIT, 0x07);   // Tarama limiti: 8 satırın hepsi aktif\n`;
+                code += `  sendByte(REG_SHUTDOWN, 0x01);    // Güç açık (Normal çalışma)\n`;
+                code += `  sendByte(REG_DISPLAYTEST, 0x00); // Test modu kapalı\n`;
+                code += `}\n\n`;
+
+                code += `void showFrame(int frameIdx) {\n`;
+                code += `  for (int row = 0; row < 8; row++) {\n`;
+                code += `    sendByte(row + 1, ${name}[frameIdx][row]);\n`;
+                code += `  }\n`;
+                code += `}\n\n`;
+
+                code += `void setup() {\n`;
+                code += `  pinMode(DIN_PIN, OUTPUT);\n`;
+                code += `  pinMode(CS_PIN, OUTPUT);\n`;
+                code += `  pinMode(CLK_PIN, OUTPUT);\n`;
+                code += `  \n`;
+                code += `  digitalWrite(CS_PIN, HIGH);\n`;
+                code += `  initMAX7219();\n`;
+                code += `  \n`;
+                code += `  // İlk kareyi yükle\n`;
+                code += `  showFrame(0);\n`;
+                code += `}\n\n`;
+
+                code += `void loop() {\n`;
+                code += `  // Kareleri sırayla göster\n`;
+                code += `  for (int f = 0; f < FRAME_COUNT; f++) {\n`;
+                code += `    showFrame(f);\n`;
+                code += `    delay(ANIMATION_SPEED);\n`;
+                code += `  }\n`;
+                code += `}\n`;
+            } else {
+                // Scrolling Text Mode
+                const cleanText = scrollText.replace(/[^A-Za-z0-9 .,!?\-:=+]/g, '').toUpperCase();
+                
+                code += `// Akan Yazı Metni: "${cleanText}"\n`;
+                code += `const char message[] = "${cleanText}";\n`;
+                code += `const int SCROLL_SPEED = 100; // Kayma hızı (ms)\n\n`;
+
+                // Add compact character font map to code
+                code += `// ASCII 32 (' ') ile 90 ('Z') arası temel karakterlerin yazı tipi\n`;
+                code += `const byte font[][8] PROGMEM = {\n`;
+                
+                // Generate code only for characters present in the message to optimize Arduino Flash memory
+                const charsUsed = new Set();
+                for (let i = 0; i < cleanText.length; i++) charsUsed.add(cleanText[i]);
+                charsUsed.add(' '); // Always have space
+
+                // Write character structures
+                code += `  // Kütüphanesiz Font Haritası\n`;
+                
+                const charIndices = {};
+                let idx = 0;
+                
+                charsUsed.forEach(char => {
+                    const bytes = FONT[char] || FONT[' '];
+                    const hexArray = bytes.map(b => "0x" + b.toString(16).toUpperCase().padStart(2, '0'));
+                    code += `  { ${hexArray.join(", ")} }, // Index ${idx}: '${char}'\n`;
+                    charIndices[char] = idx;
+                    idx++;
+                });
+                
+                code += `};\n\n`;
+
+                // Render lookup function
+                code += `// Karakterin indexini döndüren yardımcı fonksiyon\n`;
+                code += `int getCharIndex(char c) {\n`;
+                charsUsed.forEach((char, charIdx) => {
+                    const escaped = char === '\'' || char === '\\' ? '\\' + char : char;
+                    code += `  if (c == '${escaped}') return ${charIndices[char]};\n`;
+                });
+                code += `  return 0; // Bulunamayanlar için boşluk karakteri\n`;
+                code += `}\n\n`;
+
+                code += `void sendByte(byte reg, byte data) {\n`;
+                code += `  digitalWrite(CS_PIN, LOW);\n`;
+                code += `  shiftOut(DIN_PIN, CLK_PIN, MSBFIRST, reg);\n`;
+                code += `  shiftOut(DIN_PIN, CLK_PIN, MSBFIRST, data);\n`;
+                code += `  digitalWrite(CS_PIN, HIGH);\n`;
+                code += `}\n\n`;
+
+                code += `void initMAX7219() {\n`;
+                code += `  sendByte(REG_DECODEMODE, 0x00);\n`;
+                code += `  sendByte(REG_INTENSITY, 0x03);\n`;
+                code += `  sendByte(REG_SCANLIMIT, 0x07);\n`;
+                code += `  sendByte(REG_SHUTDOWN, 0x01);\n`;
+                code += `  sendByte(REG_DISPLAYTEST, 0x00);\n`;
+                code += `}\n\n`;
+
+                code += `// MAX7219 üzerine bir satırı yazar\n`;
+                code += `byte getFontRow(char c, int row) {\n`;
+                code += `  int idx = getCharIndex(c);\n`;
+                code += `  return pgm_read_byte(&(font[idx][row]));\n`;
+                code += `}\n\n`;
+
+                code += `void scrollText(const char* msg) {\n`;
+                code += `  int len = strlen(msg);\n`;
+                code += `  // Toplam kayma adım sayısı (metin genişliği + 8 sütun boşluk)\n`;
+                code += `  int totalSteps = (len + 1) * 8;\n\n`;
+                code += `  for (int step = 0; step < totalSteps; step++) {\n`;
+                code += `    int charIndex = step / 8;\n`;
+                code += `    int shift = step % 8;\n\n`;
+                code += `    for (int r = 0; r < 8; r++) {\n`;
+                code += `      byte c1 = (charIndex < len) ? getFontRow(msg[charIndex], r) : 0;\n`;
+                code += `      byte c2 = (charIndex + 1 < len) ? getFontRow(msg[charIndex + 1], r) : 0;\n`;
+                code += `      \n`;
+                code += `      // İki karakterin satır piksellerini kaydırarak birleştir\n`;
+                code += `      byte combined = (c1 << shift) | (c2 >> (8 - shift));\n`;
+                code += `      sendByte(r + 1, combined);\n`;
+                code += `    }\n`;
+                code += `    delay(SCROLL_SPEED);\n`;
+                code += `  }\n`;
+                code += `}\n\n`;
+
+                code += `void setup() {\n`;
+                code += `  pinMode(DIN_PIN, OUTPUT);\n`;
+                code += `  pinMode(CS_PIN, OUTPUT);\n`;
+                code += `  pinMode(CLK_PIN, OUTPUT);\n`;
+                code += `  \n`;
+                code += `  digitalWrite(CS_PIN, HIGH);\n`;
+                code += `  initMAX7219();\n`;
+                code += `  \n`;
+                code += `  // Matrisi temizle\n`;
+                code += `  for (int r = 0; r < 8; r++) sendByte(r + 1, 0x00);\n`;
+                code += `}\n\n`;
+
+                code += `void loop() {\n`;
+                code += `  scrollText(message);\n`;
+                code += `  delay(1000); // Yeniden başlamadan önce bekle\n`;
+                code += `}\n`;
+            }
+
+            // Write to code element with simple escaping
+            document.getElementById("code-output").innerText = code;
+        }
+
+        // Copy Code to Clipboard
+        function copyCode() {
+            const codeText = document.getElementById("code-output").innerText;
+            navigator.clipboard.writeText(codeText).then(() => {
+                const toast = document.getElementById("toast");
+                toast.classList.add("show");
+                setTimeout(() => {
+                    toast.classList.remove("show");
+                }, 2000);
+            });
+        }
+    </script>
+</body>
+</html>
