@@ -16,6 +16,8 @@ Bu projeyle çocuklar; toprak direncinin nemle olan ilişkisini, analog voltaj o
     *   **Değer 450 - 750:** Toprak Nemli ➡️ LCD: *"Nem: Normal"*
     *   **Değer < 450:** Toprak Çok Islak ➡️ LCD: *"Nem: Yüksek"*
 
+![Toprak Nem Sensörü](./images/image_1.jpg)
+
 ---
 
 ## ⚙️ Gerekli Elemanlar
@@ -46,6 +48,8 @@ LCD EKRAN (I2C) BAĞLANTISI:
 - [ SCL ]  ------------------------> Arduino Pin A5 (veya SCL pini)
 ```
 
+![Toprak Nem LCD Devre Şeması](./images/image_7.jpg)
+
 ---
 
 ## 🧩 mBlock Blok Kodları
@@ -55,6 +59,9 @@ mBlock 5 ile bu devreyi kurarken:
 2.  `nem` adında bir değişken oluşturun ve analog `A0` pini okuyarak bu değişkene eşitleyin.
 3.  `eğer ise` blokları yardımıyla `nem` değeri 750'den büyükse alt satıra `"Kuru. Lütfen Sula"`, 450 ile 750 arasındaysa `"Nem: Normal"`, 450'den küçükse `"Nem: Yüksek"` yazdırın.
 4.  Çocukların sensör kalibrasyonu yapabilmesi için üst satıra her zaman `nem` değişkeninin sayısal değerini yazdırın.
+
+![mBlock Aygıtlar Blokları](./images/mblock_3.jpg)
+![mBlock Kukla Ekranı](./images/mblock_4.jpg)
 
 ---
 

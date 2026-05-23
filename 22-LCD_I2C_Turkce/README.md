@@ -47,6 +47,8 @@ LCD EKRAN (I2C) BAĞLANTISI:
 [ SCL ]  ----------> Arduino Pin A5 (veya SCL pini)
 ```
 
+![LCD I2C Türkçe Devre Şeması](./images/schematic_4.jpg)
+
 ---
 
 ## 🧩 mBlock Blok Kodları
@@ -55,6 +57,8 @@ mBlock 5'te bu işlemi gerçekleştirmek için:
 1.  **Uzantılar** sekmesine girip arama çubuğuna **"I2C LCD Ekran Türkçe"** yazarak yazarının Ahmet Candemir olduğu özel eklentiyi mBlock uygulamanıza yükleyin.
 2.  Bu eklenti, doğrudan Türkçe karakterli cümleleri (`TÜRKÇE karakter`, `ışık`, `yağmur` vb.) tanıyan ve arka planda custom karakter tanımlamalarını otomatik gerçekleştiren bloklar sunar.
 3.  `LCD I2C Türkçe ekranı başlat` bloğundan sonra `LCD ekrana Türkçe yaz` bloklarını kullanarak Türkçe yazdırabilirsiniz.
+
+![mBlock LCD Türkçe Blokları](./images/mblock_2.jpg)
 
 ---
 

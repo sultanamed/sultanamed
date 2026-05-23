@@ -55,6 +55,8 @@ BUZZER BAĞLANTISI:
 [ - (Kısa uç) ] ------> Arduino GND
 ```
 
+![LDR Devre Şeması](./images/image_2.jpg)
+
 ---
 
 ## 🧩 mBlock Blok Kodları
@@ -66,6 +68,8 @@ mBlock uygulamasında `isik` isimli bir değişken tanımlayarak analog `A0` oku
 
 ### B) Canlı Mod (Live Mode)
 Aygıtlar sekmesinde okunan sensör değeri **Yükleme Modu İletisi** ile kuklalara gönderilir. Canlı modda Panda sahnedeki ışık düzeyini anlık ve sayısal olarak çocuklara göstererek kodun mantığını kavramalarını kolaylaştırır.
+
+![mBlock LDR Blokları](./images/mblock_4.jpg)
 
 ---
 

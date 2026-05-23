@@ -56,6 +56,8 @@ BUZZER BAĞLANTISI:
 [ - (Kısa uç) ] --------> Arduino GND
 ```
 
+![Su Seviye Devre Şeması](./images/schematic_2.jpg)
+
 ---
 
 ## 🧩 mBlock Blok Kodları
@@ -67,6 +69,8 @@ mBlock uygulamasında `seviye` isimli bir değişken oluşturulur. Analog `A0` p
 
 ### B) Canlı Mod (Live Mode)
 Aygıtlar sekmesinde okunan su yüksekliği **Yükleme Modu İletisi** ile kuklalara gönderilir. Sahnede bulunan Panda, su yüksekliği arttıkça değişen sayısal değerleri çocuklara canlı olarak gösterir.
+
+![mBlock Su Seviye Blokları](./images/mblock_1.jpg)
 
 ---
 

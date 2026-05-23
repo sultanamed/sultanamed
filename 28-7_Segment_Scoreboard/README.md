@@ -47,6 +47,8 @@ BUTON BAĞLANTILARI (Active-High / Pull-Down):
   - Buton Sağ Bacağı ➡️ Arduino Pin 9
 ```
 
+![Scoreboard Devre Şeması](./images/schematic_8.jpg)
+
 ---
 
 ## 🧩 mBlock Blok Kodları
@@ -60,6 +62,8 @@ mBlock 5 ile bu devreyi kurarken:
     *   Eğer İleri Butonuna basıldıysa (değer 1 ise), sayacı 1 artırın. Eğer sayaç 9'dan büyük olduysa sayacı 0 yapın.
     *   Eğer Geri Butonuna basıldıysa (değer 1 ise), sayacı 1 azaltın. Eğer sayaç 0'dan küçük olduysa sayacı 9 yapın.
 6.  Butona basıldığında tek bir sayım yapılması için her basımdan sonra `0.15 saniye bekle` bloğu ekleyin.
+
+![mBlock Scoreboard Blokları](./images/mblock_1.jpg)
 
 ---
 

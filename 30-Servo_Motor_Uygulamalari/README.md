@@ -17,6 +17,8 @@ Bu projeyle çocuklar; servo motorların çalışma mantığını, PWM (Pals Gen
     *   **Kahverengi / Siyah (GND):** Toprak / Eksi
     *   **Turuncu / Sarı (Sinyal):** PWM Kontrol Pini (Arduino Pin 9)
 
+![SG90 Servo Motor](./images/image_4.jpg)
+
 ---
 
 ## ⚙️ Gerekli Elemanlar
@@ -45,6 +47,8 @@ POTANSİYOMETRE BAĞLANTISI:
 - Sağ Bacak -------------------------> Arduino GND
 ```
 
+![Servo Motor Devre Şeması](./images/schematic_6.jpg)
+
 ---
 
 ## 🧩 mBlock Blok Kodları
@@ -55,6 +59,8 @@ mBlock 5 ile servo motor uygulamalarında:
 3.  **Uygulama 2 (Adımlı Dönüş):** Sürekli tekrarla içerisinde açıyı 0 yapıp 1 saniye bekle, 90 yapıp 1 saniye bekle, 180 yapıp 1 saniye bekle bloklarını kurun.
 4.  **Uygulama 3 (Yumuşak Tarama):** Bir `motor` değişkeni tanımlayın. Döngüyle `motor` değerini 0'dan 180'e kadar 1'er artırıp servoya gönderin, ardından 180'den 0'a geri azaltın.
 5.  **Uygulama 4 (Potansiyometre Kontrolü):** Analog `A0` okumasını 5.7 değerine bölerek açıyı elde edin ve servo açısına eşitleyin.
+
+![mBlock Servo Blokları](./images/mblock_2.jpg)
 
 ---
 

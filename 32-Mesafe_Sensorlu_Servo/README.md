@@ -45,6 +45,8 @@ SERVO MOTOR BAĞLANTISI:
 - Turuncu Kablo (Sinyal) -----------> Arduino Pin 9 (PWM)
 ```
 
+![Bariyer Devre Şeması](./images/image_2.jpg)
+
 ---
 
 ## 🧩 mBlock Blok Kodları
@@ -56,6 +58,8 @@ mBlock 5 ile bu devreyi kurarken:
     *   Eğer `mesafe < 6` ise Pin 9'daki servo motorun açısını 90 yapın (Bariyer Açık).
     *   Değilse Pin 9'daki servo motorun açısını 0 yapın (Bariyer Kapalı).
 4.  Döngünün sonuna kararlı okuma sağlamak amacıyla `0.1 saniye bekle` bloğu koyun.
+
+![mBlock Bariyer Blokları](./images/mblock_1.jpg)
 
 ---
 

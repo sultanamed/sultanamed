@@ -40,6 +40,8 @@ LCD EKRAN (I2C) BAĞLANTISI:
 [ SCL ]  ----------> Arduino Pin A5 (veya SCL pini)
 ```
 
+![LCD I2C Devre Şeması](./images/schematic_13.jpg)
+
 ---
 
 ## 🧩 mBlock Blok Kodları
@@ -48,6 +50,8 @@ mBlock 5'te I2C LCD ekran kullanabilmek için:
 1.  **Uzantılar** penceresini açın.
 2.  Arama kısmına **"LCD"** veya **"I2C LCD"** yazarak **"LCD I2C Eklentisi TR"** uzantısını ekleyin.
 3.  Uzantı ile birlikte gelen özel blokları (LCD başlat, Ekranı temizle, Koordinata yazı yaz, Ekranı kaydır vb.) kullanarak metin animasyonlarınızı oluşturabilirsiniz.
+
+![mBlock LCD Blokları](./images/mblock_2.jpg)
 
 ---
 

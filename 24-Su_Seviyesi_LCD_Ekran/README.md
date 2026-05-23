@@ -35,6 +35,8 @@ LCD EKRAN (I2C) BAĞLANTISI:
 [ SCL ]  ----------> Arduino Pin A5 (veya SCL pini)
 ```
 
+![LCD Su Seviye Devre Şeması](./images/schematic_2.jpg)
+
 ---
 
 ## 🧩 mBlock Blok Kodları
@@ -45,6 +47,8 @@ mBlock 5'te bu projeyi kodlamak için:
 3.  Ekranda üst satıra sabit olarak `"Deger: "` yazıldıktan sonra yanına `seviye` değişkeni eklenir.
 4.  `eğer ise` blokları ile su seviyesi aralıkları (100, 300, 500, 650) kontrol edilir.
 5.  Her aralıkta LCD ekranın alt satırı temizlenir ve `"Kuru"`, `"Düşük"`, `"Orta"`, `"Yüksek"`, `"Kritik / Taşma"` durum bilgileri yazdırılır.
+
+![mBlock LCD Su Seviye Blokları](./images/mblock_3.png)
 
 ---
 

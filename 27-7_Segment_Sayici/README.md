@@ -24,6 +24,8 @@ Bu projeyle çocuklar; 7 segment ekranın iç yapısını, ortak anot ve ortak k
       --- D ---   (DP) [Nokta]
 ```
 
+![7 Segment Display Pin Yapısı](./images/image_2.png)
+
 ### Ortak Katot (Common Cathode) ve Ortak Anot (Common Anode)
 *   **Ortak Katot:** Tüm LED'lerin eksi (-) uçları (katot) içten birleştirilmiştir ve toprağa (GND) bağlanır. Segmentleri yakmak için ilgili pinlere **HIGH** (5V) verilir.
 *   **Ortak Anot:** Tüm LED'lerin artı (+) uçları (anot) içten birleştirilmiştir ve 5V'a bağlanır. Segmentleri yakmak için ilgili pinlere **LOW** (0V) verilir.
@@ -59,6 +61,8 @@ Aşağıdaki bağlantı şemasını takip ederek devrenizi kurabilirsiniz:
 
 *Not: Display pin numaraları ekranın alt sol köşesinden (1 numara) başlayıp saat yönünün tersine 10 numaraya kadar devam eder.*
 
+![7 Segment Devre Şeması](./images/schematic_6.jpg)
+
 ---
 
 ## 🧩 mBlock Blok Kodları
@@ -69,6 +73,8 @@ mBlock 5 ile bu devreyi kurarken:
 3.  Display tanımlama bloğundan **Ortak Katot** veya **Ortak Anot** seçiminizi yapın ve pinlerinizi eşleştirin (A: 4, B: 5, C: 6, D: 7, E: 8, F: 9, G: 10, DP: 11).
 4.  Bir döngü kurarak `sayac` değerini 0'dan 9'a kadar birer saniye aralıklarla artırın ve ekranda gösterin.
 5.  Ardından 9'dan 0'a kadar geri sayma döngüsü kurun.
+
+![mBlock 7 Segment Blokları](./images/mblock_3.jpg)
 
 ---
 

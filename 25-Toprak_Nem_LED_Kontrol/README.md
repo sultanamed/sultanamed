@@ -19,6 +19,8 @@ Bu projeyle çocuklar; toprak direncinin nem oranıyla nasıl değiştiğini, an
     *   **Değer 450 - 700:** Toprak Nemli ➡️ **Sarı LED** yanar.
     *   **Değer < 450:** Toprak Çok Nemli / Islak ➡️ **Kırmızı LED** yanar.
 
+![Toprak Nem Sensörü Modülü](./images/image_3.jpg)
+
 ---
 
 ## ⚙️ Gerekli Elemanlar
@@ -50,6 +52,8 @@ LED BAĞLANTILARI:
 - Tüm LED'lerin Eksi/Kısa Bacakları ------------------> Arduino GND (Breadboard Eksi Kanalı)
 ```
 
+![Toprak Nem LED Devre Şeması](./images/image_4.jpg)
+
 ---
 
 ## 🧩 mBlock Blok Kodları
@@ -62,6 +66,8 @@ mBlock 5 ile bu devreyi kurarken:
     *   Eğer `seviye <= 700 ve seviye > 450` ise Pin 9'u (Sarı LED) YÜKSEK, Pin 10 ve Pin 8'i DÜŞÜK yapın.
     *   Eğer `seviye <= 450` ise Pin 8'i (Kırmızı LED) YÜKSEK, Pin 10 ve Pin 9'u DÜŞÜK yapın.
 4.  Değerlerin değişimini bilgisayarınızdan canlı olarak izlemek için **Seri Port** bağlantısını aktif hale getirebilirsiniz.
+
+![mBlock Blok Şeması](./images/mblock_1.jpg)
 
 ---
 

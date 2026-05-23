@@ -41,6 +41,8 @@ LED BAĞLANTISI:
 - LED Eksi (-) Ucu ------------------> Arduino GND
 ```
 
+![LDR ve Servo Devre Şeması](./images/image_9.jpg)
+
 ---
 
 ## 🧩 mBlock Blok Kodları
@@ -52,7 +54,9 @@ mBlock 5 ile bu devreyi kurarken:
     *   Eğer `Ldr < 700` ise Pin 9 açısını 180 yapın (perde kapansın) ve Pin 8 dijital çıkışını YÜKSEK yapın (LED yansın).
     *   Değilse Pin 9 açısını 0 yapın (perde açılsın) ve Pin 8 dijital çıkışını DÜŞÜK yapın (LED sönsün).
 3.  **Uygulama 2 (Orantılı Kontrol - Işık Şiddetine Göre):**
-    *   Analog `A0` okumasını matematiksel oranlarla (0-180 aralığına) ölçekleyip `motor` değişkenine atayın ve servo motor açısını `motor` değişkeni yapın. LED parlaklığını da PWM çıkışı (Pin 6) ile orantılı kontrol edin.
+    *   Analog `A0` okumasını matematiksel oranlarla (0-180 aralığına) ölçekleyip `motor` değişkenine atayın ve servo motor açısını `motor` değişkeni yapın. LED parlaklığını juga PWM çıkışı (Pin 6) ile orantılı kontrol edin.
+
+![mBlock LDR ve Servo Blokları](./images/mblock_4.jpg)
 
 ---
 

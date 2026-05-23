@@ -51,6 +51,8 @@ RGB LED BAĞLANTISI (Ortak Katot):
 [ B (Mavi) ]     -------> Arduino Pin 11 (PWM)
 ```
 
+![RGB LED Devre Şeması](./images/schematic_3.jpg)
+
 ---
 
 ## 🧩 mBlock Blok Kodları
@@ -62,6 +64,8 @@ mBlock programında **Aygıtlar** sekmesinden bir `pot` değişkeni tanımlanır
 
 ### B) Canlı Mod (Sahnede Gösterim)
 Canlı modda, aygıttan okunan potansiyometre değeri **Yükleme Modu İletisi** aracılığıyla kuklaya gönderilir. Sahnede bulunan Panda, potansiyometreyi çevirdikçe anlık değeri baloncuk içinde söyler.
+
+![mBlock RGB Blokları](./images/schematic_2.jpg)
 
 ---
 

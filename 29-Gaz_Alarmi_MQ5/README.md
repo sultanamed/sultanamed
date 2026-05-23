@@ -18,6 +18,8 @@ Bu projeyle çocuklar; gaz sensörlerinin çalışma mantığını, havadaki gaz
     *   **MQ-7:** Karbonmonoksit (Soba zehirlenmeleri için)
     *   **MQ-135:** Hava kalitesi ve zararlı gazlar
 
+![MQ-5 Gaz Sensör Modülü](./images/image_5.jpg)
+
 ---
 
 ## ⚙️ Gerekli Elemanlar
@@ -49,6 +51,8 @@ LED VE BUZZER BAĞLANTILARI:
 - Buzzer (Artı/+ Uç) --------------> Arduino Pin 7
 - Buzzer (Eksi/- Uç) --------------> Arduino GND
 ```
+
+![MQ-5 Gaz Sensörü Devre Şeması](./images/image_2.jpg)
 
 ---
 
