@@ -42,6 +42,10 @@ Her ders; konu anlatımı, devre şeması (Tinkercad/Görsel), Arduino C/C++ kod
 | **30** | [Servo Motor Uygulamaları](./30-Servo_Motor_Uygulamalari) | 🟡 Orta Seviye | [İncele](./30-Servo_Motor_Uygulamalari) |
 | **31** | [LDR ile Servo Motor Kontrolü](./31-LDR_ile_Servo_Motor) | 🟡 Orta Seviye | [İncele](./31-LDR_ile_Servo_Motor) |
 | **32** | [Mesafe Sensörlü Servo (Akıllı Bariyer)](./32-Mesafe_Sensorlu_Servo) | 🟡 Orta Seviye | [İncele](./32-Mesafe_Sensorlu_Servo) |
+| **33** | [mBlock Canlı Çalıştırma Modu ve Kukla Etkileşimi](./33-Canli_Calistirma_Modu) | 🟢 Başlangıç | [İncele](./33-Canli_Calistirma_Modu) |
+| **34** | [mBlock ile Muz Piyano (Banana Piano)](./34-Muz_Piyano) | 🟡 Orta Seviye | [İncele](./34-Muz_Piyano) |
+| **35** | [Bir Buton ile LED Yakma (Anlık Kontrol)](./35-Bir_Buton_LED_Basili) | 🟢 Başlangıç | [İncele](./35-Bir_Buton_LED_Basili) |
+| **36** | [İki Buton ile LED Yakma Söndürme (Set-Reset)](./36-Iki_Buton_LED_Yakma_Sondurme) | 🟢 Başlangıç | [İncele](./36-Iki_Buton_LED_Yakma_Sondurme) |
 
 *Yeni dersler düzenli olarak eklenecektir!* 🎛️
 
