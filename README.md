@@ -46,6 +46,17 @@ Her ders; konu anlatımı, devre şeması (Tinkercad/Görsel), Arduino C/C++ kod
 | **34** | [mBlock ile Muz Piyano (Banana Piano)](./34-Muz_Piyano) | 🟡 Orta Seviye | [İncele](./34-Muz_Piyano) |
 | **35** | [Bir Buton ile LED Yakma (Anlık Kontrol)](./35-Bir_Buton_LED_Basili) | 🟢 Başlangıç | [İncele](./35-Bir_Buton_LED_Basili) |
 | **36** | [İki Buton ile LED Yakma Söndürme (Set-Reset)](./36-Iki_Buton_LED_Yakma_Sondurme) | 🟢 Başlangıç | [İncele](./36-Iki_Buton_LED_Yakma_Sondurme) |
+| **37** | [Joystick ile Servo Motor Kontrolü](./37-Joystick_Servo_Motor) | 🟡 Orta Seviye | [İncele](./37-Joystick_Servo_Motor) |
+| **38** | [Joystick ile Sıralı LED Yakma](./38-Joystick_Sirali_LED) | 🟡 Orta Seviye | [İncele](./38-Joystick_Sirali_LED) |
+| **39** | [Röle ile Ev Elektriğinde Lamba Çalıştırma](./39-Role_Ev_Elektrigi_Lamba) | 🟡 Orta Seviye | [İncele](./39-Role_Ev_Elektrigi_Lamba) |
+| **40** | [Röle ve Buton ile Lamba Yakma Söndürme](./40-Role_ve_Buton_Lamba) | 🟡 Orta Seviye | [İncele](./40-Role_ve_Buton_Lamba) |
+| **41** | [Röle ve LDR ile Akşam Yanan Sokak Lambası](./41-Role_ve_LDR_Sokak_Lambasi) | 🟡 Orta Seviye | [İncele](./41-Role_ve_LDR_Sokak_Lambasi) |
+| **42** | [Röle ve PIR Sensörlü Hırsız Alarmı](./42-Role_ve_PIR_Alarm) | 🟡 Orta Seviye | [İncele](./42-Role_ve_PIR_Alarm) |
+| **43** | [LCD Ekranlı ve Toprak Nem Sensörlü Akıllı Sulama](./43-Sulama_Sistemi_Toprak_Nem_LCD) | 🔴 İleri Seviye | [İncele](./43-Sulama_Sistemi_Toprak_Nem_LCD) |
+| **44** | [Ses ile Servo Motor ve Lamba Kontrolü](./44-Ses_ile_Servo_Lamba) | 🔴 İleri Seviye | [İncele](./44-Ses_ile_Servo_Lamba) |
+| **45** | [Bluetooth Modülü (HC-05) ile LED Yakma](./45-Bluetooth_HC05_LED) | 🔴 İleri Seviye | [İncele](./45-Bluetooth_HC05_LED) |
+| **46** | [Bluetooth ile LED Parlaklığı Ayarlama (PWM)](./46-Bluetooth_HC05_LED_PWM) | 🔴 İleri Seviye | [İncele](./46-Bluetooth_HC05_LED_PWM) |
+| **47** | [Bluetooth ile RGB LED Kontrolü](./47-Bluetooth_RGB_LED) | 🔴 İleri Seviye | [İncele](./47-Bluetooth_RGB_LED) |
 
 *Yeni dersler düzenli olarak eklenecektir!* 🎛️
 
