@@ -56,6 +56,7 @@ Her ders; konu anlatımı, devre şeması (Tinkercad/Görsel), Arduino C/C++ kod
 | **44** | [Bluetooth Modülü (HC-05) ile LED Yakma](./44-Bluetooth_HC05_LED) | 🔴 İleri Seviye | [İncele](./44-Bluetooth_HC05_LED) |
 | **45** | [Bluetooth ile LED Parlaklığı Ayarlama (PWM)](./45-Bluetooth_HC05_LED_PWM) | 🔴 İleri Seviye | [İncele](./45-Bluetooth_HC05_LED_PWM) |
 | **46** | [Bluetooth ile RGB LED Kontrolü](./46-Bluetooth_RGB_LED) | 🔴 İleri Seviye | [İncele](./46-Bluetooth_RGB_LED) |
+| **47** | [IR Kumanda ile Kapı Kontrolü](./47-IR_Kumanda_Kapi_Kontrol) | 🟡 Orta Seviye | [İncele](./47-IR_Kumanda_Kapi_Kontrol) |
 
 *Yeni dersler düzenli olarak eklenecektir!* 🎛️
 
