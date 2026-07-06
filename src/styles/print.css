@@ -1,0 +1,125 @@
+/* A4 çalışma kağıdı düzeni */
+@page {
+  size: A4;
+  margin: 12mm;
+}
+
+.sheet {
+  width: 186mm;
+  min-height: 273mm;
+  margin: 0 auto;
+  background: #fff;
+  color: #000;
+  padding: 8mm;
+  display: flex;
+  flex-direction: column;
+  box-shadow: var(--shadow);
+  border-radius: 8px;
+}
+
+.sheet-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8mm;
+  border-bottom: 1.2pt solid #000;
+  padding-bottom: 4mm;
+  margin-bottom: 6mm;
+}
+
+.sheet-header .sh-title { font-weight: 700; font-size: 16pt; }
+.sheet-header .sh-app { font-size: 10pt; opacity: 0.75; }
+.sheet-header .sh-name { font-size: 11pt; white-space: nowrap; }
+
+.sheet-footer {
+  margin-top: auto;
+  padding-top: 4mm;
+  border-top: 0.6pt solid #999;
+  font-size: 9pt;
+  text-align: center;
+  opacity: 0.75;
+}
+
+.sheet h2.ws-title { font-size: 14pt; margin: 0 0 5mm; text-align: center; }
+
+/* Yazma (tracing) */
+.trace-row {
+  display: flex;
+  align-items: center;
+  gap: 3mm;
+  border-bottom: 0.6pt dashed #bbb;
+  padding: 2mm 0;
+  direction: rtl;
+}
+
+.trace-cell { width: 24mm; height: 24mm; flex: none; }
+.trace-box { border: 0.8pt dashed #999; border-radius: 2mm; }
+
+/* Boyama */
+.color-figure { text-align: center; margin-bottom: 6mm; }
+.color-figure .cf-art { width: 70mm; height: 70mm; margin: 0 auto; }
+.color-word-ar { font-family: var(--font-ar); font-size: 22pt; direction: rtl; }
+.color-word-tr { font-size: 13pt; font-weight: 700; }
+
+/* Eşleştirme */
+.match-table { display: flex; justify-content: space-between; gap: 20mm; flex: 1; }
+.match-col { display: flex; flex-direction: column; justify-content: space-around; flex: 1; gap: 6mm; }
+
+.match-cell {
+  display: flex;
+  align-items: center;
+  gap: 4mm;
+  min-height: 26mm;
+  border: 0.8pt solid #000;
+  border-radius: 3mm;
+  padding: 3mm;
+  justify-content: center;
+  position: relative;
+}
+
+.match-cell .dot {
+  width: 3mm;
+  height: 3mm;
+  border-radius: 50%;
+  background: #000;
+  position: absolute;
+}
+
+.match-col.left .dot { right: -6mm; }
+.match-col.right .dot { left: -6mm; }
+.match-glyph { font-family: var(--font-ar); font-size: 26pt; direction: rtl; }
+.match-art { width: 20mm; height: 20mm; }
+
+/* Sayma */
+.count-row {
+  display: flex;
+  align-items: center;
+  gap: 5mm;
+  border: 0.8pt solid #000;
+  border-radius: 3mm;
+  padding: 4mm;
+  margin-bottom: 5mm;
+}
+
+.count-numeral { font-family: var(--font-ar); font-size: 30pt; width: 18mm; text-align: center; flex: none; }
+.count-items { display: flex; flex-wrap: wrap; gap: 2mm; flex: 1; }
+.count-items .ci { width: 13mm; height: 13mm; }
+
+/* Ekran önizlemesi */
+.print-preview {
+  background: #d9d3c8;
+  min-height: 100%;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+@media print {
+  .no-print { display: none !important; }
+  body { background: #fff; }
+  .print-preview { background: #fff; padding: 0; }
+  .sheet { box-shadow: none; border-radius: 0; width: auto; min-height: auto; padding: 0; }
+  .sheet + .sheet { page-break-before: always; }
+}

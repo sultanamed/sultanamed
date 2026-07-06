@@ -1,0 +1,33 @@
+:root {
+  /* Palet — illustrations/style.ts ile eş */
+  --coral: #ff7b6b;
+  --teal: #2ec4b6;
+  --teal-dark: #1f9c90;
+  --sand: #f6d188;
+  --leaf: #7bc950;
+  --sky: #66b3e8;
+  --sun: #ffc53d;
+  --grape: #9b72cf;
+  --cream: #fff6e9;
+  --ink: #3a3335;
+  --blush: #ffa8b8;
+  --sea: #a8dcf0;
+  --white: #ffffff;
+
+  /* Boyutlar */
+  --touch: 64px;
+  --touch-lg: 88px;
+  --radius: 24px;
+  --radius-sm: 16px;
+  --shadow: 0 4px 0 rgba(58, 51, 53, 0.18);
+  --shadow-press: 0 1px 0 rgba(58, 51, 53, 0.18);
+
+  /* Yazı */
+  --font-ui: 'Baloo 2', system-ui, sans-serif;
+  --font-ar: 'Noto Naskh Arabic', serif;
+  --fs-sm: clamp(0.85rem, 2.2vw, 1rem);
+  --fs-md: clamp(1.05rem, 2.8vw, 1.35rem);
+  --fs-lg: clamp(1.4rem, 4vw, 2rem);
+  --fs-xl: clamp(2rem, 6vw, 3rem);
+  --fs-glyph: clamp(4.5rem, 18vw, 9rem);
+}
