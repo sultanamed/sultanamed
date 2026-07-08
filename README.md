@@ -1,13 +1,12 @@
 <div align="center">
 
-# Merhaba, Ben Sultan Amed 👋
+# Sultan Amed 👋
 
-**Eğitimci · Maker · Yazılım Geliştirici**
-
-*Hayal gücünü kodla, geleceği robotla!* 🤖
+**Eğitimci · Maker · Yazılım Geliştirici · Mühendis**
 
 ---
-
+ROBOTIST - Robotik Kodlama Eğitimi
+*Hayal gücünü kodla, geleceği robotla!* 🤖
 [![Website](https://img.shields.io/badge/🌐_Website-robotist.fun-0A66C2?style=for-the-badge)](https://www.robotist.fun)
 
 </div>
@@ -16,6 +15,7 @@
 
 | Proje | Açıklama |
 | :--- | :--- |
+| Herkese Açık ve Ücretsiz |
 | [Arduino & mBlock Eğitim Serisi](https://github.com/sultanamed/Arduino-mblock) | 47 derslik kapsamlı Arduino eğitim müfredatı |
 
 ## 🛠️ Teknolojiler
