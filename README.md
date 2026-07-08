@@ -1,83 +1,57 @@
-# Arduino & mBlock Eğitim Serisi 🚀
+<div align="center">
 
-Bu depo, Arduino programlamayı hem görsel blok tabanlı **mBlock** ile hem de geleneksel **Arduino C/C++ (CC)** kodları ile öğrenmek isteyenler için hazırlanmış kapsamlı bir eğitim serisidir.
+# Merhaba, Ben Sultan Ahmed 👋
 
-Her ders; konu anlatımı, devre şeması (Tinkercad/Görsel), Arduino C/C++ kodları ve mBlock blok diyagramlarını içerir. Dileyen Tinkercad simülasyonu üzerinden, dileyen doğrudan kodlarla, dileyen de mBlock bloklarıyla projeleri takip edebilir.
+**Eğitimci · Maker · Yazılım Geliştirici**
 
----
-
-## 📚 Ders İçeriği (Müfredat)
-
-| Ders No | Proje / Konu Adı | Zorluk Derecesi | Bağlantılar |
-| :---: | :--- | :---: | :---: |
-| **01** | [Blink (Göz Kırpan LED)](./01-Blink) | 🟢 Başlangıç | [İncele](./01-Blink) |
-| **02** | [Trafik Lambası](./02-Trafik_Lambasi) | 🟢 Başlangıç | [İncele](./02-Trafik_Lambasi) |
-| **03** | [Blink Buzzer (Flaşör Buzzer)](./03-Blink_Buzzer) | 🟢 Başlangıç | [İncele](./03-Blink_Buzzer) |
-| **04** | [RGB LED](./04-RGB_Led) | 🟢 Başlangıç | [İncele](./04-RGB_Led) |
-| **05** | [Yürüyen Işık Devresi](./05-Yuruyen_Isik) | 🟢 Başlangıç | [İncele](./05-Yuruyen_Isik) |
-| **06** | [PWM Sinyali ile LED Parlaklığı Ayarlama](./06-PWM_Led) | 🟢 Başlangıç | [İncele](./06-PWM_Led) |
-| **07** | [Potansiyometre ile LED Parlaklığı Ayarlama](./07-Potansiyometre_LED) | 🟢 Başlangıç | [İncele](./07-Potansiyometre_LED) |
-| **08** | [mBlock ile Değişken Oluşturma](./08-Degisken_Olusturma) | 🟢 Başlangıç | [İncele](./08-Degisken_Olusturma) |
-| **09** | [Potansiyometre ile Flip Flop Devresi](./09-Potansiyometre_Flip_Flop) | 🟢 Başlangıç | [İncele](./09-Potansiyometre_Flip_Flop) |
-| **10** | [Bir Buton ile LED Yakma Söndürme](./10-Buton_Toggle_LED) | 🟢 Başlangıç | [İncele](./10-Buton_Toggle_LED) |
-| **11** | [Seri Port Ekranı Kullanımı](./11-Seri_Port) | 🟢 Başlangıç | [İncele](./11-Seri_Port) |
-| **12** | [LDR ile LED Alarm (Sokak Lambası)](./12-LDR_LED_Alarm) | 🟡 Orta Seviye | [İncele](./12-LDR_LED_Alarm) |
-| **13** | [LDR ile Canlı Mod (Live Mode)](./13-LDR_Canli_Mod) | 🟡 Orta Seviye | [İncele](./13-LDR_Canli_Mod) |
-| **14** | [HC-SR04 Mesafe Ölçümü](./14-Mesafe_Sensoru) | 🟡 Orta Seviye | [İncele](./14-Mesafe_Sensoru) |
-| **15** | [Araç Park Sensörü Yapımı](./15-Park_Sensoru) | 🟡 Orta Seviye | [İncele](./15-Park_Sensoru) |
-| **16** | [HC-SR501 PIR Sensörü ile Hırsız Alarmı](./16-PIR_Hirsiz_Alarm) | 🟡 Orta Seviye | [İncele](./16-PIR_Hirsiz_Alarm) |
-| **17** | [Alev Sensörü ile Yangın Alarmı](./17-Alev_Sensoru) | 🟡 Orta Seviye | [İncele](./17-Alev_Sensoru) |
-| **18** | [MAX7219 Entegresi ile 8x8 LED Matris](./18-8x8_Matrix) | 🔴 İleri Seviye | [İncele](./18-8x8_Matrix) |
-| **19** | [Potansiyometre ile RGB LED Kontrolü](./19-Potansiyometre_RGB_LED) | 🟢 Başlangıç | [İncele](./19-Potansiyometre_RGB_LED) |
-| **20** | [LDR ile Işık Seviyesi Ölçümü](./20-LDR_Isik_Seviyesi) | 🟢 Başlangıç | [İncele](./20-LDR_Isik_Seviyesi) |
-| **21** | [I2C LCD Ekran Kullanımı](./21-LCD_I2C_Ekran) | 🟡 Orta Seviye | [İncele](./21-LCD_I2C_Ekran) |
-| **22** | [I2C LCD Türkçe Karakter Uygulaması](./22-LCD_I2C_Turkce) | 🟡 Orta Seviye | [İncele](./22-LCD_I2C_Turkce) |
-| **23** | [Su Seviyesi ve Yağmur Alarmı](./23-Su_Seviye_Yagmur_Alarmi) | 🟡 Orta Seviye | [İncele](./23-Su_Seviye_Yagmur_Alarmi) |
-| **24** | [Su Seviyesi LCD Ekran Göstergesi](./24-Su_Seviyesi_LCD_Ekran) | 🟡 Orta Seviye | [İncele](./24-Su_Seviyesi_LCD_Ekran) |
-| **25** | [Toprak Nem Seviyesi LED Kontrolü](./25-Toprak_Nem_LED_Kontrol) | 🟡 Orta Seviye | [İncele](./25-Toprak_Nem_LED_Kontrol) |
-| **26** | [Toprak Nemi LCD Ekran Göstergesi](./26-Toprak_Nemi_LCD_Ekran) | 🟡 Orta Seviye | [İncele](./26-Toprak_Nemi_LCD_Ekran) |
-| **27** | [7 Segment Display 0-9 Sayıcı](./27-7_Segment_Sayici) | 🟡 Orta Seviye | [İncele](./27-7_Segment_Sayici) |
-| **28** | [7 Segment Display Scoreboard Butonlu](./28-7_Segment_Scoreboard) | 🟡 Orta Seviye | [İncele](./28-7_Segment_Scoreboard) |
-| **29** | [MQ-5 Gaz Sensörü ile Doğal Gaz Alarmı](./29-Gaz_Alarmi_MQ5) | 🟡 Orta Seviye | [İncele](./29-Gaz_Alarmi_MQ5) |
-| **30** | [Servo Motor Uygulamaları](./30-Servo_Motor_Uygulamalari) | 🟡 Orta Seviye | [İncele](./30-Servo_Motor_Uygulamalari) |
-| **31** | [LDR ile Servo Motor Kontrolü](./31-LDR_ile_Servo_Motor) | 🟡 Orta Seviye | [İncele](./31-LDR_ile_Servo_Motor) |
-| **32** | [Mesafe Sensörlü Servo (Akıllı Bariyer)](./32-Mesafe_Sensorlu_Servo) | 🟡 Orta Seviye | [İncele](./32-Mesafe_Sensorlu_Servo) |
-| **33** | [mBlock Canlı Çalıştırma Modu ve Kukla Etkileşimi](./33-Canli_Calistirma_Modu) | 🟢 Başlangıç | [İncele](./33-Canli_Calistirma_Modu) |
-| **34** | [Bir Buton ile LED Yakma (Anlık Kontrol)](./34-Bir_Buton_LED_Basili) | 🟢 Başlangıç | [İncele](./34-Bir_Buton_LED_Basili) |
-| **35** | [İki Buton ile LED Yakma Söndürme (Set-Reset)](./35-Iki_Buton_LED_Yakma_Sondurme) | 🟢 Başlangıç | [İncele](./35-Iki_Buton_LED_Yakma_Sondurme) |
-| **36** | [Joystick ile Servo Motor Kontrolü](./36-Joystick_Servo_Motor) | 🟡 Orta Seviye | [İncele](./36-Joystick_Servo_Motor) |
-| **37** | [Joystick ile Sıralı LED Yakma](./37-Joystick_Sirali_LED) | 🟡 Orta Seviye | [İncele](./37-Joystick_Sirali_LED) |
-| **38** | [Röle ile Ev Elektriğinde Lamba Çalıştırma](./38-Role_Ev_Elektrigi_Lamba) | 🟡 Orta Seviye | [İncele](./38-Role_Ev_Elektrigi_Lamba) |
-| **39** | [Röle ve Buton ile Lamba Yakma Söndürme](./39-Role_ve_Buton_Lamba) | 🟡 Orta Seviye | [İncele](./39-Role_ve_Buton_Lamba) |
-| **40** | [Röle ve LDR ile Akşam Yanan Sokak Lambası](./40-Role_ve_LDR_Sokak_Lambasi) | 🟡 Orta Seviye | [İncele](./40-Role_ve_LDR_Sokak_Lambasi) |
-| **41** | [Röle ve PIR Sensörlü Hırsız Alarmı](./41-Role_ve_PIR_Alarm) | 🟡 Orta Seviye | [İncele](./41-Role_ve_PIR_Alarm) |
-| **42** | [LCD Ekranlı ve Toprak Nem Sensörlü Akıllı Sulama](./42-Sulama_Sistemi_Toprak_Nem_LCD) | 🔴 İleri Seviye | [İncele](./42-Sulama_Sistemi_Toprak_Nem_LCD) |
-| **43** | [Ses ile Servo Motor ve Lamba Kontrolü](./43-Ses_ile_Servo_Lamba) | 🔴 İleri Seviye | [İncele](./43-Ses_ile_Servo_Lamba) |
-| **44** | [Bluetooth Modülü (HC-05) ile LED Yakma](./44-Bluetooth_HC05_LED) | 🔴 İleri Seviye | [İncele](./44-Bluetooth_HC05_LED) |
-| **45** | [Bluetooth ile LED Parlaklığı Ayarlama (PWM)](./45-Bluetooth_HC05_LED_PWM) | 🔴 İleri Seviye | [İncele](./45-Bluetooth_HC05_LED_PWM) |
-| **46** | [Bluetooth ile RGB LED Kontrolü](./46-Bluetooth_RGB_LED) | 🔴 İleri Seviye | [İncele](./46-Bluetooth_RGB_LED) |
-| **47** | [IR Kumanda ile Kapı Kontrolü](./47-IR_Kumanda_Kapi_Kontrol) | 🟡 Orta Seviye | [İncele](./47-IR_Kumanda_Kapi_Kontrol) |
-
-*Yeni dersler düzenli olarak eklenecektir!* 🎛️
+*Hayal gücünü kodla, geleceği robotla!* 🤖
 
 ---
 
-## 🛠️ Kullanılan Araçlar
+[![Website](https://img.shields.io/badge/🌐_Website-robotist.fun-0A66C2?style=for-the-badge)](https://www.robotist.fun)
+[![GitHub](https://img.shields.io/badge/GitHub-sultanamed-181717?style=for-the-badge&logo=github)](https://github.com/sultanamed)
 
-*   **Donanım:** Arduino Uno, Breadboard, LED, Direnç (220Ω), Jumper Kablolar.
-*   **Yazılım & Simülasyon:**
-*   [mBlock 5](https://www.mblock.cc/en/download/) (Blok Tabanlı Kodlama)
-*   [Arduino IDE](https://www.arduino.cc/en/software) (C/C++ Kodlama)
-*   [Tinkercad Circuits](https://www.tinkercad.com/) (Çevrimiçi Devre Simülasyonu)
+</div>
+
+## 🚀 Hakkımda
+
+Robotik, Arduino ve yazılım dünyasında eğitim içerikleri üreten bir geliştiriciyim. mBlock ve Arduino C/C++ ile çocuklara ve yetişkinlere kodlama öğretiyorum.
+
+## 📌 Öne Çıkan Projeler
+
+| Proje | Açıklama | Teknolojiler |
+| :--- | :--- | :--- |
+| [Arduino & mBlock Eğitim Serisi](https://github.com/sultanamed/Arduino-mblock) | 47 derslik kapsamlı Arduino eğitim müfredatı | Arduino, mBlock, C/C++ |
+| [Robotist.fun](https://www.robotist.fun) | Robotik eğitim platformu | Web |
+| [SiteDesk](https://github.com/sultanamed/sitedesk) | AI destekli bina yönetim portalı | Web App |
+
+## 🛠️ Teknolojiler & Araçlar
+
+<div align="center">
+
+![Arduino](https://img.shields.io/badge/Arduino-00979D?style=flat-square&logo=arduino&logoColor=white)
+![Python](https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white)
+![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black)
+![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=flat-square&logo=html5&logoColor=white)
+![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=flat-square&logo=css3&logoColor=white)
+![Git](https://img.shields.io/badge/Git-F05032?style=flat-square&logo=git&logoColor=white)
+
+</div>
+
+## 📊 GitHub İstatistikleri
+
+<div align="center">
+
+![GitHub Stats](https://github-readme-stats.vercel.app/api?username=sultanamed&show_icons=true&theme=tokyonight&hide_border=true&locale=tr)
+
+</div>
 
 ---
 
-## 🤝 Katkıda Bulunma
+<div align="center">
 
-Eğer bu seriye katkıda bulunmak isterseniz, lütfen bir Pull Request (PR) açın veya hata/önerilerinizi Issues kısmından bildirin.
+**💬 Benimle iletişime geçin!**
 
----
+📧 İletişim için [robotist.fun](https://www.robotist.fun) adresini ziyaret edin.
 
-**Hazırlayan:** [sultanamed](https://github.com/sultanamed) 💻  
-www.robotist.fun  
-Hayal gücünü kodla, geleceği robotla!
+</div>

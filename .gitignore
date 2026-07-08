@@ -1,17 +1,6 @@
-# Python virtual environment
-amed/
-venv/
-.venv/
-__pycache__/
-*.pyc
-
 # macOS system files
 .DS_Store
 
 # IDEs and editors
 .vscode/
 .idea/
-
-# Scratch directory
-scratch/
-
